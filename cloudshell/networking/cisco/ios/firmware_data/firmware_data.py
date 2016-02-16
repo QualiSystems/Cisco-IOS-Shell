@@ -3,6 +3,7 @@ __author__ = 'g8y3e'
 from abc import ABCMeta
 from abc import abstractmethod
 
+
 class FirmwareData:
     __metaclass__ = ABCMeta
 
@@ -11,7 +12,7 @@ class FirmwareData:
 
         self._file_path = file_path
 
-        if not result_parse is None:
+        if result_parse is not None:
             self._name = result_parse[0]
             self._extension = result_parse[1]
         else:

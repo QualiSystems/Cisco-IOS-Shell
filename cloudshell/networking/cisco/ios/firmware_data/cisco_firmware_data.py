@@ -2,6 +2,7 @@ __author__ = 'g8y3e'
 
 from firmware_data import FirmwareData
 
+
 class CiscoFirmwareData(FirmwareData):
     def _parseFilePath(self, file_path):
         """
@@ -24,7 +25,6 @@ class CiscoFirmwareData(FirmwareData):
         extension = firmware_title_parts[-1]
 
         return name, extension
-
 
     def isValidVersion(self):
         return True

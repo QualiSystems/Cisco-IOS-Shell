@@ -8,11 +8,12 @@ import socket
 from cloudshell.networking.cisco.cisco_os import CiscoOS
 
 from cloudshell.networking.utils import *
-from cloudshell.networking.cisco.cisco_network_interfaces.ethernet import Ethernet
-from cloudshell.networking.cisco.cisco_autoload.cisco_generic_snmp_autoload import CiscoGenericSNMPAutoload
+from cloudshell.networking.cisco.command_templates.ethernet import Ethernet
+from cloudshell.networking.cisco.autoload.cisco_generic_snmp_autoload import CiscoGenericSNMPAutoload
 from cloudshell.networking.cisco.ios.firmware_data.cisco_firmware_data import CiscoFirmwareData
 from cloudshell.cli import expected_actions
 from cloudshell.api.cloudshell_api import CloudShellAPISession
+
 
 class CiscoIOS(CiscoOS):
     DEFAULT_PROMPT = '.*> *$'
@@ -185,11 +186,11 @@ class CiscoIOS(CiscoOS):
 
     def copy(self, source_filesystem='', destination_filesystem='', timeout=30, retries=5, **kwargs):
         if len(source_filesystem) != 0 and not self._is_valid_copy_filesystem(source_filesystem):
-            raise Exception('Cisco IOS', 'Copy method: source filesystem \"' + source_filesystem \
+            raise Exception('Cisco IOS', 'Copy method: source filesystem \"' + source_filesystem
                             + '\" is incorrect!')
 
         if len(destination_filesystem) != 0 and not self._is_valid_copy_filesystem(destination_filesystem):
-            raise Exception('Cisco IOS', 'Copy method: destination filesystem \"' + destination_filesystem \
+            raise Exception('Cisco IOS', 'Copy method: destination filesystem \"' + destination_filesystem
                             + '\" is incorrect!')
 
         if 'source_filename' not in kwargs or len(kwargs['source_filename']) == 0:
@@ -233,8 +234,8 @@ class CiscoIOS(CiscoOS):
                         destination_filename = kwargs['destination_filename']
 
                     output = self._send_command(destination_filename, expected_str=self._prompt,
-                                               expected_map={'\[confirm\]|\?': expected_actions.send_empty_string},
-                                               timeout=timeout)
+                                                expected_map={'\[confirm\]|\?': expected_actions.send_empty_string},
+                                                timeout=timeout)
 
             is_downloaded = self._check_download_from_tftp(output)
 
@@ -251,11 +252,10 @@ class CiscoIOS(CiscoOS):
                 '\[no\]|\[yes\]:': expected_actions.send_yes
             }
 
-            output = self._send_command(command, expected_str=self._prompt, expected_map=expected_map,
-                                       timeout=timeout)
+            output = self._send_command(command, expected_str=self._prompt, expected_map=expected_map, timeout=timeout)
 
             match_error = re.search('[Ee]rror:', output)
-            if not match_error is None:
+            if match_error is not None:
                 error_str = output[match_error.end() + 1:]
                 error_str = error_str[:error_str.find('\n')]
                 raise Exception('Cisco IOS', 'Configure replace error: ' + error_str)
@@ -267,7 +267,8 @@ class CiscoIOS(CiscoOS):
             testshell_user = self.reservation_dict['AdminUsername']
             testshell_password = self.reservation_dict['AdminPassword']
             testshell_domain = self.reservation_dict['Domain']
-            self._cloud_shell_api = CloudShellAPISession(testshell_ip, testshell_user, testshell_password, testshell_domain)
+            self._cloud_shell_api = CloudShellAPISession(testshell_ip, testshell_user, testshell_password,
+                                                         testshell_domain)
         return self._cloud_shell_api
 
     def reload(self, sleep_timeout=60, retry_count=5):
@@ -286,7 +287,7 @@ class CiscoIOS(CiscoOS):
             time.sleep(sleep_timeout)
             try:
                 output = self._send_command('', expected_str='(?<![#\n])[#>] *$', expected_map={}, timeout=5,
-                                           is_need_default_prompt=False)
+                                            is_need_default_prompt=False)
                 if len(output) == 0:
                     continue
 
@@ -498,7 +499,7 @@ class CiscoIOS(CiscoOS):
                             Current path: " + file_path)
 
             # if not validateIP(remote_host):
-            #     raise Exception('Cisco ISR 4K', "Not valid remote host IP address!")
+            #     raise Exception('Cisco IOS', "Not valid remote host IP address!")
         free_memory_size = self._get_free_memory_size('bootflash')
 
         #if size_of_firmware > free_memory_size:

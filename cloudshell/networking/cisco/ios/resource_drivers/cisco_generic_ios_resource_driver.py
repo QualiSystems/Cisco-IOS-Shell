@@ -4,11 +4,12 @@ from cloudshell.shell.core.driver_builder_wrapper import DriverFunction
 from cloudshell.networking.resource_driver.networking_generic_resource_dirver import networking_generic_resource_driver
 
 
-class networking_generic_ios_resource_driver(networking_generic_resource_driver):
-    @DriverFunction(extraMatrixRows={"resource": ["ResourceAddress", "User", "Password", "Enable Password", "Console Server IP Address",
+class cisco_generic_ios_resource_driver(networking_generic_resource_driver):
+    @DriverFunction(extraMatrixRows={"resource": ["ResourceAddress", "User", "Password", "Enable Password",
+                                                  "Console Server IP Address",
                                                   "Console User", "Console Password", "Console Port", "Connection Type",
-                                                  "SNMP Version", "SNMP Read Community", "SNMP V3 User", "SNMP V3 Password",
-                                                  "SNMP V3 Private Key"]})
+                                                  "SNMP Version", "SNMP Read Community", "SNMP V3 User",
+                                                  "SNMP V3 Password", "SNMP V3 Private Key"]})
     def Init(self, matrixJSON):
         self.handler_name = 'ios'
         networking_generic_resource_driver.Init(self, matrixJSON)
@@ -42,14 +43,8 @@ if __name__ == '__main__':
                     "AdminUsername" : "admin",
                     "AdminPassword" : "admin"}
             }""")
-#"ReservationId" : "94e31679-7262-4ad8-977e-cea2dbe2705e",
 
-    #"ResourceAddress": "172.29.128.17",
-    #"User": "klop",
-    #"Password": "azsxdc",
-    #"CLI Connection Type": "ssh ",
-
-    resource_driver = networking_generic_ios_resource_driver('77', data_json)
+    resource_driver = cisco_generic_ios_resource_driver('77', data_json)
     print resource_driver.GetInventory(data_json)
     #print resource_driver.Add_VLAN(data_json, '192.168.42.235/0/22', '55', 'trunk', '')
     #import sys; sys.exit()
@@ -81,5 +76,6 @@ if __name__ == '__main__':
     print resource_driver.GetInventory(data_json)
     print resource_driver.SendCommand(data_json, 'sh ver')
     #print resource_driver.GetInventory(data_json)
+
 
 

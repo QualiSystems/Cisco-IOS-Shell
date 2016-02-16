@@ -41,11 +41,11 @@ class CiscoIOS(CiscoOS):
     def snmp_handler(self, hsnmp):
         self._snmp_handler = hsnmp
 
-    def _defaultActions(self):
+    def _default_actions(self):
         """Send default commands to configure/clear session outputs
         :return:
         """
-        self._session.setUnsafeMode(True)
+        self._session.set_unsafe_mode(True)
 
         output = self._send_command('')
 

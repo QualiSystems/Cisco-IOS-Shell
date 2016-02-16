@@ -12,7 +12,7 @@ from cloudshell.networking.cisco.cisco_network_interfaces.ethernet import Ethern
 from cloudshell.networking.cisco.cisco_autoload.cisco_generic_snmp_autoload import CiscoGenericSNMPAutoload
 from cloudshell.networking.cisco.ios.firmware_data.cisco_firmware_data import CiscoFirmwareData
 from cloudshell.cli import expected_actions
-from cloudshell.api.cloudshell_api import CloudShellAPISession, AttributeNameValue, SetConnectorRequest
+from cloudshell.api.cloudshell_api import CloudShellAPISession
 
 class CiscoIOS(CiscoOS):
     DEFAULT_PROMPT = '.*> *$'
@@ -25,7 +25,6 @@ class CiscoIOS(CiscoOS):
 
     def __init__(self, connection_manager, logger):
         CiscoOS.__init__(self, connection_manager, logger)
-        #self._expected_map = dict(CiscoIOS.EXPECTED_MAP)
         self.supported_os = ['IOS', 'IOS-XE', 'CATOS']
         self._prompt = "{0}|{1}|{2}".format(self.DEFAULT_PROMPT, self.ENABLE_PROMPT, self.CONFIG_MODE_PROMPT)
         self._snmp_handler = None
@@ -42,17 +41,16 @@ class CiscoIOS(CiscoOS):
         self._snmp_handler = hsnmp
 
     def _defaultActions(self):
-        '''Send default commands to configure/clear session outputs
-
+        """Send default commands to configure/clear session outputs
         :return:
-        '''
+        """
         self._session.setUnsafeMode(True)
 
         output = self._send_command('')
 
         if re.search('> *$', output):
             output = self._send_command('enable',
-                                       expected_map={'[Pp]assword': expected_actions.send_default_password})
+                                        expected_map={'[Pp]assword': expected_actions.send_default_password})
 
         if re.search('> *$', output):
             raise Exception('Cisco IOSX', "Can't set enable mode!")
@@ -98,7 +96,6 @@ class CiscoIOS(CiscoOS):
 
         if not out:
             return False
-        #self._prompt = self.CONFIG_MODE_PROMPT
         return re.search(self._prompt, out)
 
     def _exit_configuration_mode(self):
@@ -122,7 +119,6 @@ class CiscoIOS(CiscoOS):
                 self._send_command('exit')
             else:
                 break
-        #self._prompt = self.ENABLE_PROMPT
 
         return out
 
@@ -167,9 +163,10 @@ class CiscoIOS(CiscoOS):
             self.send_config_command(command)
 
     def normalize_output(self, output):
-        return output.replace(' ', self.SPACE).replace('\r\n', self.NEWLINE).replace('\n', self.NEWLINE).replace('\r', self.NEWLINE)
+        return output.replace(' ', self.SPACE).replace('\r\n', self.NEWLINE).replace('\n', self.NEWLINE).\
+            replace('\r', self.NEWLINE)
 
-    def _checkDownloadFromTFTP(self, output):
+    def _check_download_from_tftp(self, output):
         status_match = re.search('\[OK - [0-9]* bytes\]', output)
         is_success = (status_match is not None)
         message = ''
@@ -183,15 +180,15 @@ class CiscoIOS(CiscoOS):
 
         return is_success, message
 
-    def _isValidCopyFilesystem(self, filesystem):
+    def _is_valid_copy_filesystem(self, filesystem):
         return not re.match('bootflash$|tftp$|ftp$|harddisk$|nvram$|pram$|flash$|localhost$', filesystem) is None
 
     def copy(self, source_filesystem='', destination_filesystem='', timeout=30, retries=5, **kwargs):
-        if len(source_filesystem) != 0 and not self._isValidCopyFilesystem(source_filesystem):
+        if len(source_filesystem) != 0 and not self._is_valid_copy_filesystem(source_filesystem):
             raise Exception('Cisco IOS', 'Copy method: source filesystem \"' + source_filesystem \
                             + '\" is incorrect!')
 
-        if len(destination_filesystem) != 0 and not self._isValidCopyFilesystem(destination_filesystem):
+        if len(destination_filesystem) != 0 and not self._is_valid_copy_filesystem(destination_filesystem):
             raise Exception('Cisco IOS', 'Copy method: destination filesystem \"' + destination_filesystem \
                             + '\" is incorrect!')
 
@@ -199,12 +196,12 @@ class CiscoIOS(CiscoOS):
             raise Exception('Cisco IOS', 'Copy method: source filename not set!')
 
         if source_filesystem != '':
-            source_filesystem = source_filesystem + ': '
+            source_filesystem += ': '
         else:
             source_filesystem = kwargs['source_filename'] + ' '
 
         if destination_filesystem != '':
-            destination_filesystem = destination_filesystem + ':'
+            destination_filesystem += ':'
         else:
             if 'destination_filename' in kwargs and len(kwargs['destination_filename']) != 0:
                 destination_filesystem = kwargs['destination_filename']
@@ -239,7 +236,7 @@ class CiscoIOS(CiscoOS):
                                                expected_map={'\[confirm\]|\?': expected_actions.send_empty_string},
                                                timeout=timeout)
 
-            is_downloaded = self._checkDownloadFromTFTP(output)
+            is_downloaded = self._check_download_from_tftp(output)
 
         return is_downloaded
 
@@ -300,7 +297,7 @@ class CiscoIOS(CiscoOS):
 
         return is_reloaded
 
-    def _getAllInterfacesInfo(self):
+    def _get_all_interfaces_info(self):
         """Get list of interfaces and their information, trigger 'show ip interface brief' command and parse output
 
         :return: dictionary with all interfaces' info
@@ -325,7 +322,7 @@ class CiscoIOS(CiscoOS):
                         getDictionaryData(match_dict, ['interface_name'])
         return interface_data
 
-    def _getDataMatch(self, reg_exp, data_str):
+    def _get_data_match(self, reg_exp, data_str):
         data_map = {}
 
         match_object = re.search(reg_exp, data_str)
@@ -357,8 +354,9 @@ class CiscoIOS(CiscoOS):
     def configure_vlan(self, vlan_range, port_list, switchport_type, additional_info, remove=False):
         """
         Sends snmp get command
-        :param vlan_range: range of vlans to be added, if empty, and switchport_type = trunk, trunk mode will be assigned
-        :param ports: List of interfaces Resource Full Address
+        :param vlan_range: range of vlans to be added, if empty, and switchport_type = trunk,
+        trunk mode will be assigned
+        :param port_list: List of interfaces Resource Full Address
         :param switchport_type: type of adding vlan ('trunk' or 'access')
         :param additional_info: contains QNQ or CTag parameter
         :param remove: remove or add flag
@@ -379,7 +377,8 @@ class CiscoIOS(CiscoOS):
                 self._logger.error('Interface was not found')
                 raise Exception('Interface was not found')
             port_name = temp_port_name.split('/')[-1].replace('-', '/')
-            self._logger.info('Vlan {0} will be assigned to or removed from interface {1}'.format(vlan_range, port_name))
+            self._logger.info('Vlan {0} will be assigned to or removed from interface {1}'.format(vlan_range,
+                                                                                                  port_name))
 
             params_map = dict()
 
@@ -399,14 +398,14 @@ class CiscoIOS(CiscoOS):
                         raise Exception('interface cannot have trunk and dot1q-tunneling modes in the same time')
                     params_map['qnq'] = ''
 
-            self.configureInterfaceEthernet(**params_map)
+            self.configure_interface_ethernet(**params_map)
             self._exit_configuration_mode()
             if remove:
                 self._logger.info('All vlans and switchport mode were removed from the interface {0}'.format(port_name))
             self._logger.info('Vlan {0} was assigned to the interface {1}'.format(vlan_range, port_name))
         return 'Vlan Configuration Completed'
 
-    def configureInterfaceEthernet(self, **kwargs):
+    def configure_interface_ethernet(self, **kwargs):
         """
         Configures interface ethernet
         :param kwargs: dictionary of parameters
@@ -426,7 +425,6 @@ class CiscoIOS(CiscoOS):
     def snmp_get(self, get_mib, get_command, get_index, oid=None):
         """
         Sends snmp get command
-        :param json_object: parsed json, to create snmp handler if it is None
         :param get_mib: Mib name ('SNMPv2-MIB')
         :param get_command: command name ('sysDescr')
         :param get_index: index name ('0')
@@ -436,8 +434,8 @@ class CiscoIOS(CiscoOS):
         request_command = ''
         if oid:
             request_command = oid
-        elif get_mib != '' and get_command != '' and id != '':
-            request_command = (get_mib, get_command, id)
+        elif get_mib != '' and get_command != '' and get_index != '':
+            request_command = (get_mib, get_command, get_index)
         else:
             self._logger.error('One or several Snmp Get parameters is empty')
 
@@ -453,7 +451,7 @@ class CiscoIOS(CiscoOS):
         match_str = re.sub('[\n\r]+', ' ', system_description.upper())
         res = re.search(' (IOS|IOS-XE|CAT[ -]?OS) ', match_str)
         if res:
-            version=res.group(0).strip(' \s\r\n')
+            version = res.group(0).strip(' \s\r\n')
         if version and version in self.supported_os:
             return True
         self._logger.info('System description from device: \'{0}\''.format(system_description))
@@ -501,7 +499,7 @@ class CiscoIOS(CiscoOS):
 
             # if not validateIP(remote_host):
             #     raise Exception('Cisco ISR 4K', "Not valid remote host IP address!")
-        free_memory_size = self._getFreeMemorySize('bootflash')
+        free_memory_size = self._get_free_memory_size('bootflash')
 
         #if size_of_firmware > free_memory_size:
         #    raise Exception('Cisco ISR 4K', "Not enough memory for firmware!")
@@ -514,7 +512,7 @@ class CiscoIOS(CiscoOS):
                             file_path + "!\n" + is_downloaded[1])
 
         self._send_command('configure terminal', expected_str='(config)#')
-        self._removeOldBootSystemConfig()
+        self._remove_old_boot_system_config()
         output = self._send_command('do show run | include boot')
 
         is_boot_firmware = False
@@ -545,10 +543,9 @@ class CiscoIOS(CiscoOS):
         else:
             raise Exception('Cisco IOS', 'Firmware update was unsuccessful!')
 
-    def _get_resource_attribute(self, resource_full_path, attributeName):
-        result = ''
+    def _get_resource_attribute(self, resource_full_path, attribute_name):
         try:
-            result = self.cloud_shell_api.GetAttributeValue(resource_full_path, attributeName).Value
+            result = self.cloud_shell_api.GetAttributeValue(resource_full_path, attribute_name).Value
         except Exception as e:
             raise Exception(e.message)
         return result
@@ -557,21 +554,19 @@ class CiscoIOS(CiscoOS):
         """Backup 'startup-config' or 'running-config' from device to provided file_system [ftp|tftp]
         Also possible to backup config to localhost
 
-        :param destination_filesystem:  were will backup store
+        :param custom_destination_host:  tftp/ftp server where file be saved
         :param source_filename: what file to backup
-        :param remote_host: host were backup store, default = 'localhost'
-        :param destination_filename: relative path on remote host
         :return: status message / exception
         """
 
         system_name = self.attributes_dict['ResourceFullName'].replace('.', '_')
-        destination_filename = '{0}-{1}-{2}'.format(system_name, source_filename, self._getTimeStamp())
+        destination_filename = '{0}-{1}-{2}'.format(system_name, source_filename, self._get_time_stamp())
         self._logger.info('destination filename is {0}'.format(destination_filename))
 
         destination_host = custom_destination_host
         if '//' not in destination_host:
             destination_host = self._get_resource_attribute(self.attributes_dict['ResourceFullName'],
-                                                                'Backup Location')
+                                                            'Backup Location')
             if '//' not in destination_host:
                 raise Exception('Cisco IOS', "Remote filesystem must be 'tftp' or 'ftp'!")
 
@@ -597,17 +592,14 @@ class CiscoIOS(CiscoOS):
         else:
             return is_uploaded[1]
 
-    def _getTimeStamp(self):
+    def _get_time_stamp(self):
         return time.strftime("%d%m%Y-%H%M%S", time.gmtime())
 
     def restore_configuration(self, source_file, clear_config='override'):
         """Restore configuration on device from provided configuration file
         Restore configuration from local file system or ftp/tftp server into 'running-config' or 'startup-config'.
-
-        :param source_filesystem: type of remote host [ftp|tftp], default = 'localhost'
-        :param source_filename: relative path on remote host
-        :param remote_host: host were backup store
-        :param destination_filename: what file to restore
+        :param source_file: relative path to the file on the remote host tftp://server/sourcefile
+        :param clear_config: override current config or not
         :return:
         """
         self._logger.info('Start restoring device configuration from {}'.format(source_file))
@@ -627,18 +619,16 @@ class CiscoIOS(CiscoOS):
 
         source_filename = extracted_data[1].replace(remote_host + '/', '')
 
-        #if ('startup-config' not in source_file.lower()) and ('running-config' not in source_file.lower()):
-        #    raise Exception('Cisco IOS', "Destination filename must be 'startup-config' or 'running-config'!")
-
         if ('127.0.0.1' in source_file) or ('localhost' in source_file):
-            remote_host ='localhost'
+            remote_host = 'localhost'
 
         if (clear_config.lower() == 'override') and (destination_filename == 'startup-config'):
-            self._send_command('del ' + destination_filename,  expected_map={'\?|[confirm]': expected_actions.send_empty_string})
+            self._send_command('del ' + destination_filename,
+                               expected_map={'\?|[confirm]': expected_actions.send_empty_string})
 
             is_uploaded = self.copy(source_filesystem=source_filesystem, remote_host=remote_host,
                                     source_filename=source_filename, destination_filename=destination_filename,
-                                    timeout=600, retries=5 )
+                                    timeout=600, retries=5)
         elif (clear_config.lower() == 'override') and (destination_filename == 'running-config'):
 
             if not (remote_host == 'localhost'):
@@ -654,25 +644,16 @@ class CiscoIOS(CiscoOS):
         if is_uploaded[0] is False:
             raise Exception('Cisco IOS', is_uploaded[1])
 
-        #output = self._send_command('show ' + destination_filename)
-        #output = self._send_command('show ip interfaces b')
-
         is_downloaded = (True, '')
-        #if destination_filename == 'running-config':
-        #    source_filename_str = 'startup-config'
-        #    is_downloaded = self.copy(source_filename=destination_filename, destination_filename=source_filename_str)
 
         if is_downloaded[0] is True:
             return 'Finished restore configuration!'
         else:
             raise Exception('Cisco IOS', is_downloaded[1])
 
-    def _removeOldBootSystemConfig(self):
-        '''Clear boot system parameters in current configuration
-
-        :param data:
-        :return:
-        '''
+    def _remove_old_boot_system_config(self):
+        """Clear boot system parameters in current configuration
+        """
 
         data = self._send_command('do show run | include boot')
         start_marker_str = 'boot-start-marker'
@@ -689,9 +670,8 @@ class CiscoIOS(CiscoOS):
             if line.find('boot system') != -1:
                 self._send_command('no ' + line, expected_str='(config)#')
 
-    def _getFreeMemorySize(self, partition):
+    def _get_free_memory_size(self, partition):
         """Get available memory size on provided partition
-
         :param partition: file system
         :return: size of free memory in bytes
         """
@@ -712,7 +692,7 @@ class CiscoIOS(CiscoOS):
         else:
             return -1
 
-    def _getEthernetInterfaceInfo(self, interface_name):
+    def _get_ethernet_interface_info(self, interface_name):
         """Get interface information. Send 'Show interface X' command and parse returned output
             Method for get ethernet interface info map
 
@@ -727,15 +707,16 @@ class CiscoIOS(CiscoOS):
         data_str = re.sub(' +', ' ', data_str)
 
         #hardware
-        interface_info.update(self._getDataMatch('Hardware is (?P<type>[\w/\-\+\d ]+).*', data_str))
-        interface_info.update(self._getDataMatch('address is (?P<mac>[\w\d]{4}\.[\d\w]{4}\.[\w\d]{4})', data_str))
-        interface_info.update(self._getDataMatch('Internet address is (?P<port_ip>(\d+\.){3}\d+)[/ ]{1}(?P<mask>(\d+\.){3}\d+|\d{0,2})', data_str))
-        interface_info.update(self._getDataMatch('.*MTU (?P<mtu>\d+) bytes,', data_str))
-        interface_info.update(self._getDataMatch('BW (?P<bandwidth>\d+ .bit/sec), +', data_str))
-        interface_info.update(self._getDataMatch('DLY (?P<dly>\d+ usec),.*', data_str))
-        interface_info.update(self._getDataMatch('Encapsulation (?P<encapsulation>\S+),', data_str))
-        interface_info.update(self._getDataMatch('.*\$ (?P<duplex>Full)? Duplex,', data_str))
-        interface_info.update(self._getDataMatch('.*media type is (?P<media_type>[^\$]*)\$', data_str))
+        interface_info.update(self._get_data_match('Hardware is (?P<type>[\w/\-\+\d ]+).*', data_str))
+        interface_info.update(self._get_data_match('address is (?P<mac>[\w\d]{4}\.[\d\w]{4}\.[\w\d]{4})', data_str))
+        interface_info.update(self._get_data_match(
+            'Internet address is (?P<port_ip>(\d+\.){3}\d+)[/ ]{1}(?P<mask>(\d+\.){3}\d+|\d{0,2})', data_str))
+        interface_info.update(self._get_data_match('.*MTU (?P<mtu>\d+) bytes,', data_str))
+        interface_info.update(self._get_data_match('BW (?P<bandwidth>\d+ .bit/sec), +', data_str))
+        interface_info.update(self._get_data_match('DLY (?P<dly>\d+ usec),.*', data_str))
+        interface_info.update(self._get_data_match('Encapsulation (?P<encapsulation>\S+),', data_str))
+        interface_info.update(self._get_data_match('.*\$ (?P<duplex>Full)? Duplex,', data_str))
+        interface_info.update(self._get_data_match('.*media type is (?P<media_type>[^\$]*)\$', data_str))
 
         if 'port_ip' in interface_info:
             if validateIP(interface_info['port_ip']):
@@ -749,22 +730,20 @@ class CiscoIOS(CiscoOS):
 
         return interface_info
 
-    def _getReleaseVersion(self):
+    def _get_release_version(self):
         """Get release version information by sending 'show version' command and parsing output
-
         :return: version string
         """
         version_info = self._send_command('show version | section Version')
 
         result = ''
         match_object = re.search('(?<=Version )(.*?)(?=,)', version_info)
-        if not match_object is None:
+        if match_object is not None:
             result = match_object.group(1)
         return result
 
-    def _getFirmwareVersion(self):
+    def _get_firmware_version(self):
         """Get firmware version information by sending 'show version' command and parsing output
-
         :return: version string
         """
         version_info = self._send_command('show version | include .bin')

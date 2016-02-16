@@ -4,7 +4,7 @@ from firmware_data import FirmwareData
 
 
 class CiscoFirmwareData(FirmwareData):
-    def _parseFilePath(self, file_path):
+    def _parse_file_path(self, file_path):
         """
         :param file_path:
         :return: need to return tuple, were 0 - name, 1 - version, 2 - extension
@@ -26,8 +26,8 @@ class CiscoFirmwareData(FirmwareData):
 
         return name, extension
 
-    def isValidVersion(self):
+    def is_valid_version(self):
         return True
 
-    def isValidExtension(self):
+    def is_valid_extension(self):
         return self._extension == 'bin'

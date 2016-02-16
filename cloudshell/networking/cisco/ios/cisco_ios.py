@@ -492,7 +492,7 @@ class CiscoIOS(CiscoOS):
         """
 
         firmware_obj = CiscoFirmwareData(file_path)
-        if firmware_obj.getName() is None:
+        if firmware_obj.get_name() is None:
             raise Exception('Cisco IOS', "Invalid firmware name!\n \
                             Firmware file must have: title, extension.\n \
                             Example: isr4400-universalk9.03.10.00.S.153-3.S-ext.SPA.bin\n\n \
@@ -517,8 +517,8 @@ class CiscoIOS(CiscoOS):
         output = self._send_command('do show run | include boot')
 
         is_boot_firmware = False
-        firmware_full_name = firmware_obj.getName() + \
-                             '.' + firmware_obj.getExtension()
+        firmware_full_name = firmware_obj.get_name() + \
+                             '.' + firmware_obj.get_extension()
 
         retries = 5
         while (not is_boot_firmware) and (retries > 0):

@@ -235,18 +235,9 @@
 	<Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
-    <AttributeInfo xsi:type="LookupAttributeDetails" Name="L2 Switch Type" Type="Lookup" DefaultValue="Physical" IsReadOnly="false" IsCommand="false">
-      <Rules>
-        <Rule Name="Configuration" />
-      </Rules>
-      <LookupValues>
-        <LookupValue NumericValue="0" StringValue="None" />
-        <LookupValue NumericValue="1" StringValue="Physical" />
-      </LookupValues>
-    </AttributeInfo>
   </Attributes>
   <ResourceFamilies>
-    <ResourceFamily Name="Switch" Description="" IsMappableContainer="true" IsMappable="false" IsConnectable="false" IsLicenseCheckRequired="false" IsAllConnectedContainer="false" IsLockedByDefault="false" AcceptsMultipleConnections="false" SupportsMulticastMapping="true" SupportsLoopbackMapping="true" IsPowerSwitch="true" IsConsoleServer="false" IsSearchable="true">
+    <ResourceFamily Name="Switch" Description="" IsSearchable="true">
       <AttachedAttributes />
       <AttributeValues />
       <Models>
@@ -316,9 +307,6 @@
           <AllowedValues />
         </AttachedAttribute>
         <AttachedAttribute Name="CLI Connection Type" IsOverridable="true" IsLocal="true">
-	  <AllowedValues />
-	</AttachedAttribute>
-	<AttachedAttribute Name="L2 Switch Type" IsOverridable="true" IsLocal="false">
 	  <AllowedValues />
 	</AttachedAttribute>
       </AttachedAttributes>
@@ -519,7 +507,7 @@
       </Models>
       <Categories />
     </ResourceFamily>
-    <ResourceFamily Name="Port" IsSearchable="true" IsMappableContainer="false" IsMappable="true" IsConnectable="true" IsLicenseCheckRequired="false" IsAllConnectedContainer="false" IsLockedByDefault="true" AcceptsMultipleConnections="false" SupportsMulticastMapping="false" SupportsLoopbackMapping="false" IsPowerSwitch="false" IsConsoleServer="false">
+    <ResourceFamily Name="Port" IsSearchable="true" IsConnectable="true" IsLockedByDefault="true">
           	<AttachedAttributes />
 			<AttributeValues />
 		<Models>

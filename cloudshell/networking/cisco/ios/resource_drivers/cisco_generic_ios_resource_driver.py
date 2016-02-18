@@ -1,5 +1,6 @@
 __author__ = 'CoYe'
-
+# required import! Contains handler map
+import cloudshell.networking.cisco.ios.resource_drivers
 from cloudshell.shell.core.driver_builder_wrapper import DriverFunction
 from cloudshell.networking.resource_driver.networking_generic_resource_dirver import networking_generic_resource_driver
 

@@ -4,19 +4,16 @@
     <AttributeInfo Name="User" Type="String" DefaultValue="" IsReadOnly="false">
       <Rules>
         <Rule Name="Configuration" />
-        <Rule Name="Setting" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Password" Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw==" IsReadOnly="false">
       <Rules>
         <Rule Name="Configuration" />
-        <Rule Name="Setting" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Enable Password" Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw==" IsReadOnly="false">
       <Rules>
         <Rule Name="Configuration" />
-        <Rule Name="Setting" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Power Management" Type="Boolean" DefaultValue="False" IsReadOnly="false">
@@ -26,44 +23,38 @@
     </AttributeInfo>
     <AttributeInfo Name="System Name" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Contact Name" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="OS Version" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Version" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Vendor" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Location" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Backup Location" Type="String" DefaultValue="" IsReadOnly="false">
@@ -73,10 +64,9 @@
     </AttributeInfo>
 	<AttributeInfo xsi:type="LookupAttributeDetails" Name="Protocol Type" Type="Lookup" DefaultValue="Transparent" IsReadOnly="true" IsCommand="false">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
-        <Rule Name="Constant Capability" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
+       <Rule Name="Constant Capability" />
       </Rules>
             <LookupValues>
                 <LookupValue NumericValue="0" StringValue="Transparent"/>
@@ -84,9 +74,8 @@
         </AttributeInfo>
     <AttributeInfo Name="Model" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+      	<Rule Name="Setting" />
+	       <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="SNMP Read Community" Type="String" DefaultValue="" IsReadOnly="false">
@@ -134,7 +123,7 @@
         <Rule Name="Configuration" />
       </Rules>
     </AttributeInfo>
-    <AttributeInfo Name="Console Port" Type="String" DefaultValue="" IsReadOnly="false">
+    <AttributeInfo Name="Console Port" Type="Numeric" DefaultValue="0" IsReadOnly="false">
       <Rules>
         <Rule Name="Configuration" />
       </Rules>
@@ -153,61 +142,56 @@
         </AttributeInfo>
     <AttributeInfo Name="Serial Number" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="MAC Address" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="L2 Protocol Type" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
+       <Rule Name="Setting" />
+       <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="IPv4 Address" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="IPv6 Address" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Port Description" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
-    <AttributeInfo Name="Bandwidth" Type="String" DefaultValue="" IsReadOnly="true">
+    <AttributeInfo Name="Bandwidth" Type="Numeric" DefaultValue="0" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
-    <AttributeInfo Name="MTU" Type="String" DefaultValue="0" IsReadOnly="true">
+    <AttributeInfo Name="MTU" Type="Numeric" DefaultValue="0" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+      	<Rule Name="Setting" />
+	      <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo xsi:type="LookupAttributeDetails" Name="Duplex" Type="Lookup" DefaultValue="Half" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
+        <Rule Name="Setting" />
+        <Rule Name="Available For Abstract Resources" />
       </Rules>
       <LookupValues>
         <LookupValue NumericValue="2" StringValue="Half" />
@@ -216,33 +200,30 @@
     </AttributeInfo>
     <AttributeInfo Name="Adjacent" Type="String" DefaultValue="" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Auto Negotiation" Type="Boolean" DefaultValue="False" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Associated Ports" Type="String" DefaultValue="" Description="in the format &quot;[portResourceName],...&quot;, for example &quot;GE0-0-0-1,GE-0-0-0-2&quot;" IsReadOnly="true">
       <Rules>
-        <Rule Name="Configuration" />
-	<Rule Name="Setting" />
-	<Rule Name="Available For Abstract Resources" />
+	     <Rule Name="Setting" />
+	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
   </Attributes>
   <ResourceFamilies>
-    <ResourceFamily Name="Switch" Description="" IsSearchable="true">
+    <ResourceFamily Name="Switch" Description="" IsSearchable="true" IsPowerSwitch="true">
       <AttachedAttributes />
       <AttributeValues />
       <Models>
-        <ResourceModel Name="Cisco IOS Switch" Description="" SupportsConcurrentCommands="true">
-	<AttachedAttributes>
+        <ResourceModel Name="Cisco IOS Switch" Description="" SupportsConcurrentCommands="false">
+		<AttachedAttributes>
         <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
           <AllowedValues />
         </AttachedAttribute>
@@ -307,10 +288,10 @@
           <AllowedValues />
         </AttachedAttribute>
         <AttachedAttribute Name="CLI Connection Type" IsOverridable="true" IsLocal="true">
-	  <AllowedValues />
-	</AttachedAttribute>
-      </AttachedAttributes>
-          <AttributeValues>
+		  <AllowedValues />
+		</AttachedAttribute>
+		</AttachedAttributes>
+        <AttributeValues>
             <AttributeValue Name="User" Value="" />
             <AttributeValue Name="Password" Value="3M3u7nkDzxWb0aJ/IZYeWw==" />
             <AttributeValue Name="Enable Password" Value="3M3u7nkDzxWb0aJ/IZYeWw==" />
@@ -330,10 +311,9 @@
             <AttributeValue Name="Console Server IP Address" Value="" />
             <AttributeValue Name="Console User" Value="" />
             <AttributeValue Name="Console Password" Value="3M3u7nkDzxWb0aJ/IZYeWw==" />
-            <AttributeValue Name="Console Port" Value="" />
+            <AttributeValue Name="Console Port" Value="0" />
             <AttributeValue Name="CLI Connection Type" Value="Auto" />
             <AttributeValue Name="Power Management" Value="False" />
-	    <AttributeValue Name="L2 Switch Type" Value="Physical" />
           </AttributeValues>
           <ParentModels />
           <Drivers>
@@ -344,11 +324,11 @@
       </Models>
       <Categories />
     </ResourceFamily>
-    <ResourceFamily Name="Router" Description="" IsSearchable="true">
+    <ResourceFamily Name="Router" Description="" IsSearchable="true" IsPowerSwitch="true">
       <AttachedAttributes />
       <AttributeValues />
       <Models>
-        <ResourceModel Name="Cisco IOS Router" Description="" SupportsConcurrentCommands="true">
+        <ResourceModel Name="Cisco IOS Router" Description="" SupportsConcurrentCommands="false">
           <AttachedAttributes>
         <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
           <AllowedValues />
@@ -435,7 +415,7 @@
         <AttributeValue Name="SNMP Version" Value="" />
         <AttributeValue Name="SNMP Write Community" Value="" />
         <AttributeValue Name="Console Password" Value="3M3u7nkDzxWb0aJ/IZYeWw==" />
-        <AttributeValue Name="Console Port" Value="" />
+        <AttributeValue Name="Console Port" Value="0" />
         <AttributeValue Name="Console Server IP Address" Value="" />
         <AttributeValue Name="Console User" Value="" />
         <AttributeValue Name="CLI Connection Type" Value="Auto" />
@@ -443,8 +423,8 @@
       </AttributeValues>
           <ParentModels />
           <Drivers>
-		<DriverName>Generic Cisco IOS Driver</DriverName>
-	  </Drivers> 
+            <DriverName>Generic Cisco IOS Driver</DriverName>
+          </Drivers> 
           <Scripts />
         </ResourceModel>
       </Models>
@@ -553,7 +533,7 @@
 			<AttributeValue Name="IPv4 Address" Value="" />
 			<AttributeValue Name="IPv6 Address" Value="" />
 			<AttributeValue Name="Port Description" Value="" />
-			<AttributeValue Name="Bandwidth" Value="" />
+			<AttributeValue Name="Bandwidth" Value="0" />
 			<AttributeValue Name="MTU" Value="0" />
 			<AttributeValue Name="Duplex" Value="Half" />
 			<AttributeValue Name="Protocol Type" Value="Transparent" />

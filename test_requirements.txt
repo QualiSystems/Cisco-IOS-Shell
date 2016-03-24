@@ -1,1 +1,1 @@
-cloudshell-networking-cisco
+cloudshell-networking-cisco<2.0

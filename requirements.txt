@@ -1,1 +1,1 @@
-cloudshell-networking-cisco<2.0
+cloudshell-networking-cisco>=2.0,<2.1

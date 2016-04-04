@@ -1,4 +1,5 @@
 # required import! Contains handler map
+import cloudshell.networking.cisco.ios.resource_drivers
 from cloudshell.shell.core.driver_builder_wrapper import DriverFunction
 from cloudshell.networking.resource_driver.networking_generic_resource_driver import networking_generic_resource_driver
 
@@ -12,5 +13,3 @@ class cisco_generic_ios_resource_driver(networking_generic_resource_driver):
     def Init(self, matrixJSON):
         self.handler_name = 'ios'
         networking_generic_resource_driver.Init(self, matrixJSON)
-
-

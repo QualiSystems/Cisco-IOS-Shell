@@ -1,7 +1,7 @@
 import threading
 
 from cloudshell.networking.cisco.ios.cisco_ios_resource_driver import CiscoIOSResourceDriver
-from cloudshell.shell.core.context.driver_context import ResourceCommandContext, ResourceContextDetails, \
+from cloudshell.shell.core.context.context import ResourceCommandContext, ResourceContextDetails, \
     ReservationContextDetails
 
 class DriverCommandExecution(threading.Thread):
@@ -47,7 +47,7 @@ context.resource.attributes['user'] = 'root'
 context.resource.attributes['SNMP Version'] = '2'
 context.resource.attributes['SNMP Read Community'] = 'Cisco'
 context.resource.attributes['password'] = 'Password1'
-context.resource.attributes['ResourceAddress'] = '192.168.42.235'
+context.resource.attributes['ResourceAddress'] = '172.29.128.17'
 
 class MyThread(threading.Thread):
 

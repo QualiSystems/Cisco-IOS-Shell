@@ -32,6 +32,5 @@ class CiscoIOSResourceDriver:
     def get_inventory(self, context):
         handler = inject.instance('handler')
         test = handler.discover_snmp()
-        print test
         return test
 

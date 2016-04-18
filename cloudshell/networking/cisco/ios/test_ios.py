@@ -47,7 +47,7 @@ context.resource.attributes['user'] = 'root'
 context.resource.attributes['SNMP Version'] = '2'
 context.resource.attributes['SNMP Read Community'] = 'Cisco'
 context.resource.attributes['password'] = 'Password1'
-context.resource.attributes['ResourceAddress'] = '172.29.128.17'
+context.resource.attributes['ResourceAddress'] = '192.168.42.235'
 
 class MyThread(threading.Thread):
 

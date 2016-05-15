@@ -4,7 +4,9 @@
     <Category Name="Hidden Commands">
 		<Command Name="shutdown" DisplayName="Shutdown" Tags="">
 			<Parameters>
+				<Parameter Name="command" Type="String" Mandatory = "False" DefaultValue="" DisplayName="" Description=""/>
 			</Parameters>
+	</Command>
       <Command Name="add_vlan" DisplayName="Add VLAN" Description="" Tags="remote_connectivity">
         <Parameters>
 			<Parameter Name="ports" Type="String" Mandatory = "False" DefaultValue="" AllowedValues="" DisplayName="" Description=""/>

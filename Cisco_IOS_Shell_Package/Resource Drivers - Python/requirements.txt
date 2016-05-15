@@ -1,2 +1,4 @@
 cloudshell-networking
 cloudshell-automation-api
+cloudshell-snmp
+cloudshell-cli

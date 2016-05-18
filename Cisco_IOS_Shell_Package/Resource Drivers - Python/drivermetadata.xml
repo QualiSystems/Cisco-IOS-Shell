@@ -28,7 +28,7 @@
           <Parameter Name="command" Type="String" Mandatory = "True" DefaultValue=""  Description=""/>
         </Parameters>
       </Command>
-	<Command Name="apply_connectivity_changes" DisplayName="ApplyConnectivityChanges" Tags="allow_unreserved">
+	<Command Name="ApplyConnectivityChanges" DisplayName="ApplyConnectivityChanges" Tags="allow_unreserved">
         <Parameters>
           <Parameter Name="request" Type="String" Mandatory = "True" DefaultValue="" Description=""/>
         </Parameters>

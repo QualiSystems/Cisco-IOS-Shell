@@ -2,7 +2,7 @@ import inject
 
 from cloudshell.networking.networking_resource_driver_interface import NetworkingResourceDriverInterface
 
-from cloudshell.shell.core.context.context_utils import context_from_args
+from cloudshell.shell.core.context_utils import context_from_args
 from cloudshell.networking.cisco.ios.cisco_ios_bootstrap import CiscoIOSBootstrap
 import cloudshell.networking.cisco.ios.cisco_ios_configuration as config
 from cloudshell.shell.core.resource_driver_interface import ResourceDriverInterface

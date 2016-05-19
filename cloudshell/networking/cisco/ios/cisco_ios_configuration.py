@@ -1,5 +1,5 @@
 from cloudshell.networking.cisco.ios.cisco_ios_handler import CiscoIOSHandler
-from cloudshell.shell.core.context.context_utils import get_attribute_by_name
+from cloudshell.shell.core.context_utils import get_attribute_by_name
 import re, inject
 
 my_handler = CiscoIOSHandler

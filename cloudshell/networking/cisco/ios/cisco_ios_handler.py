@@ -5,5 +5,3 @@ class CiscoIOSHandler(CiscoHandlerBase):
     def __init__(self):
         CiscoHandlerBase.__init__(self)
         self.supported_os = ['IOS', 'IOS-XE', 'CATOS']
-
-

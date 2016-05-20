@@ -222,7 +222,7 @@
       <AttachedAttributes />
       <AttributeValues />
       <Models>
-        <ResourceModel Name="Cisco IOS Switch" Description="" SupportsConcurrentCommands="false">
+        <ResourceModel Name="Cisco IOS Switch" Description="" SupportsConcurrentCommands="true">
 		<AttachedAttributes>
         <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
           <AllowedValues />
@@ -317,7 +317,7 @@
           </AttributeValues>
           <ParentModels />
           <Drivers>
-		<DriverName>Generic Cisco IOS Driver</DriverName>
+		<DriverName>Generic Cisco IOS Driver 2</DriverName>
 	  </Drivers> 
           <Scripts />
         </ResourceModel>
@@ -328,7 +328,7 @@
       <AttachedAttributes />
       <AttributeValues />
       <Models>
-        <ResourceModel Name="Cisco IOS Router" Description="" SupportsConcurrentCommands="false">
+        <ResourceModel Name="Cisco IOS Router" Description="" SupportsConcurrentCommands="true">
           <AttachedAttributes>
         <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
           <AllowedValues />
@@ -423,7 +423,7 @@
       </AttributeValues>
           <ParentModels />
           <Drivers>
-            <DriverName>Generic Cisco IOS Driver</DriverName>
+            <DriverName>Generic Cisco IOS Driver 2</DriverName>
           </Drivers> 
           <Scripts />
         </ResourceModel>

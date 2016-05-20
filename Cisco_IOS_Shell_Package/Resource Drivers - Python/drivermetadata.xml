@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Driver Name="Generic Cisco IOS Driver 2" Version="3.0.0" MainClass="cisco_ios_resource_driver.CiscoIOSResourceDriver" Description="Generic driver for all IOS devices">
+  <Layout>
+    <Category Name="Hidden Commands">
+		<Command Name="shutdown" DisplayName="Shutdown" Tags="">
+			<Parameters>
+				<Parameter Name="command" Type="String" Mandatory = "False" DefaultValue="" DisplayName="" Description=""/>
+			</Parameters>
+	</Command>
+      <Command Name="add_vlan" DisplayName="Add VLAN" Description="" Tags="remote_connectivity">
+        <Parameters>
+			<Parameter Name="ports" Type="String" Mandatory = "False" DefaultValue="" AllowedValues="" DisplayName="" Description=""/>
+			<Parameter Name="vlan_range" Type="String" Mandatory = "True" DefaultValue="" DisplayName="VLAN Ranges" Description=""/>
+			<Parameter Name="port_Mode" Type="String" Mandatory = "True" DefaultValue="Access" AllowedValues="Access,Trunk" DisplayName="Mode" Description="r"/>
+			<Parameter Name="additional_info" Type="String" Mandatory = "False" DefaultValue="" AllowedValues="" DisplayName="" Description=""/>
+        </Parameters>
+      </Command>
+      <Command Name="remove_vlan" DisplayName="Remove VLAN" Description="" Tags="remote_connectivity">
+        <Parameters>
+			<Parameter Name="ports" Type="String" Mandatory = "False" DefaultValue="" AllowedValues="" DisplayName="" Description=""/>
+			<Parameter Name="vlan_range" Type="String" Mandatory = "True" DefaultValue="" DisplayName="VLAN Ranges" Description=""/>
+			<Parameter Name="port_Mode" Type="String" Mandatory = "True" DefaultValue="Access" AllowedValues="Access,Trunk" DisplayName="Mode" Description="r"/>
+			<Parameter Name="additional_info" Type="String" Mandatory = "False" DefaultValue="" AllowedValues="" DisplayName="" Description=""/>
+        </Parameters>
+      </Command>
+      <Command Name="send_custom_config_command" DisplayName="Send Custom Config Command" Tags="">
+        <Parameters>
+          <Parameter Name="command" Type="String" Mandatory = "True" DefaultValue=""  Description=""/>
+        </Parameters>
+      </Command>
+	<Command Name="ApplyConnectivityChanges" DisplayName="ApplyConnectivityChanges" Tags="allow_unreserved">
+        <Parameters>
+          <Parameter Name="request" Type="String" Mandatory = "True" DefaultValue="" Description=""/>
+        </Parameters>
+      </Command>
+	</Category>
+      <Command Name="send_custom_command" DisplayName="Send Custom Command" Tags="">
+        <Parameters>
+          <Parameter Name="command" Type="String" Mandatory = "True" DefaultValue=""  Description=""/>
+        </Parameters>
+      </Command>
+      <Command Name="save" DisplayName="Save" Tags="">
+        <Parameters>
+			<Parameter Name="destination_host" Type="String" Mandatory = "True" DisplayName="Folder Path" DefaultValue=""  Description=""/>
+			<Parameter Name="source_filename" Type="String" Mandatory = "True" DisplayName="Configuration Type" DefaultValue=""  Description=""/>
+        </Parameters>
+      </Command>
+      <Command Name="restore" DisplayName="Restore" Tags="">
+        <Parameters>
+			<Parameter Name="path" Type="String" Mandatory = "True" DefaultValue="" DisplayName="Path" Description=""/>
+			<Parameter Name="config_type" Type="String" Mandatory = "True" DefaultValue="" DisplayName="Configuration Type" Description=""/>
+			<Parameter Name="restore_method" Type="String" Mandatory = "True" DefaultValue="" DisplayName="Restore Method" Description=""/>
+        </Parameters>
+      </Command>
+      <Command Name="update_firmware" DisplayName="Load Firmware" Tags="">
+        <Parameters>
+			<Parameter Name="remote_host" Type="String" Mandatory = "True" DisplayName="Remote Host" DefaultValue=""  Description=""/>
+			<Parameter Name="file_path" Type="String" Mandatory = "True" DisplayName="File Path" DefaultValue=""  Description=""/>
+        </Parameters>
+      </Command>	
+  </Layout>
+</Driver>

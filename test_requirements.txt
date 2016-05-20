@@ -1,1 +1,3 @@
 cloudshell-networking-cisco
+cloudshell-snmp
+cloudshell-cli

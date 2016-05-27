@@ -1,5 +1,5 @@
 from cloudshell.networking.cisco.ios.cisco_ios_handler import CiscoIOSHandler
-import inject
+
 
 my_handler = CiscoIOSHandler
 

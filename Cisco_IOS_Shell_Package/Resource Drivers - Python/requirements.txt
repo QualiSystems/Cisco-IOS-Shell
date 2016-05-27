@@ -1,1 +1,1 @@
-cloudshell-networking-cisco-ios
+cloudshell-networking-cisco-ios>=3.0,<3.1

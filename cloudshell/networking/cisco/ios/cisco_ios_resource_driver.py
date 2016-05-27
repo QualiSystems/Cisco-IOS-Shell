@@ -100,34 +100,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         return response
 
     @context_from_args
-    def add_vlan(self, context, ports, vlan_range, port_mode, additional_info):
-        """Assign vlan or vlan range to the certain interface
-
-        :return: result
-        :rtype: string
-        """
-
-        handler = inject.instance("handler")
-        result_str = handler.add_vlan(port_list=ports,
-                                      vlan_range=vlan_range.replace(' ', ''),
-                                      port_mode=port_mode,
-                                      qnq=('qnq' in additional_info.lower()))
-        handler.logger.info(result_str)
-
-    @context_from_args
-    def remove_vlan(self, context, ports, vlan_range, port_mode, additional_info):
-        """Remove vlan or vlan range from the certain interface
-
-        :return: result
-        :rtype: string
-        """
-
-        handler = inject.instance("handler")
-        result_str = handler.remove_vlan(port_list=ports,
-                                         vlan_range=vlan_range, port_mode=port_mode)
-        handler.logger.info(result_str)
-
-    @context_from_args
     def send_custom_config_command(self, context, command):
         """Send custom command in configuration mode
 

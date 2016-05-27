@@ -1,6 +1,5 @@
 from cloudshell.networking.cisco.ios.cisco_ios_handler import CiscoIOSHandler
-from cloudshell.shell.core.context_utils import get_attribute_by_name
-import re, inject
+import inject
 
 my_handler = CiscoIOSHandler
 
@@ -14,8 +13,7 @@ DEFAULT_PROMPT = '.*>\s*$|.*#\s*$'
 ENABLE_PROMPT = '.*#\s*$'
 CONFIG_MODE_PROMPT = '\(config.*\)#\s*$'
 
-@inject.params(logger='logger')
-def send_default_actions(session, logger=None):
+def send_default_actions(session):
     """Send default commands to configure/clear session outputs
     :return:
     """
@@ -25,7 +23,6 @@ def send_default_actions(session, logger=None):
     session.hardware_expect('no logging console', CONFIG_MODE_PROMPT)
     session.hardware_expect('exit', DEFAULT_PROMPT+'|'+ENABLE_PROMPT)
 
-CONNECTION_TYPE = 'ssh'
 ENTER_CONFIG_MODE_PROMPT_COMMAND = 'configure terminal'
 EXIT_CONFIG_MODE_PROMPT_COMMAND = 'exit'
 DEFAULT_ACTIONS = send_default_actions

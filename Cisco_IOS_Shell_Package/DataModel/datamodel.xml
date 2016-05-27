@@ -317,7 +317,7 @@
           </AttributeValues>
           <ParentModels />
           <Drivers>
-		<DriverName>Generic Cisco IOS Driver 2</DriverName>
+		<DriverName>Generic Cisco IOS Driver Version2</DriverName>
 	  </Drivers> 
           <Scripts />
         </ResourceModel>
@@ -423,7 +423,7 @@
       </AttributeValues>
           <ParentModels />
           <Drivers>
-            <DriverName>Generic Cisco IOS Driver 2</DriverName>
+            <DriverName>Generic Cisco IOS Driver Version2</DriverName>
           </Drivers> 
           <Scripts />
         </ResourceModel>

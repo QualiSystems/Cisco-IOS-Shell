@@ -108,6 +108,11 @@
         <Rule Name="Configuration" />
       </Rules>
     </AttributeInfo>
+    <AttributeInfo Name="Sessions Concurrency Limit" Type="Numeric" DefaultValue="1" IsReadOnly="false">
+      <Rules>
+        <Rule Name="Configuration" />
+      </Rules>
+    </AttributeInfo>
     <AttributeInfo Name="Console Server IP Address" Type="String" DefaultValue="" IsReadOnly="false">
       <Rules>
         <Rule Name="Configuration" />
@@ -275,6 +280,9 @@
         <AttachedAttribute Name="SNMP Version" IsOverridable="true" IsLocal="true">
           <AllowedValues />
         </AttachedAttribute>
+        <AttachedAttribute Name="Sessions Concurrency Limit" IsOverridable="true" IsLocal="true">
+          <AllowedValues />
+        </AttachedAttribute>
         <AttachedAttribute Name="Console Server IP Address" IsOverridable="true" IsLocal="true">
           <AllowedValues />
         </AttachedAttribute>
@@ -376,6 +384,9 @@
           <AllowedValues />
         </AttachedAttribute>
         <AttachedAttribute Name="SNMP Write Community" IsOverridable="true" IsLocal="true">
+          <AllowedValues />
+        </AttachedAttribute>
+        <AttachedAttribute Name="Sessions Concurrency Limit" IsOverridable="true" IsLocal="true">
           <AllowedValues />
         </AttachedAttribute>
         <AttachedAttribute Name="Console Password" IsOverridable="true" IsLocal="true">

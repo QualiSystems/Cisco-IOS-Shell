@@ -27,8 +27,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     @context_from_args
     def ApplyConnectivityChanges(self, context, request):
         handler = inject.instance('handler')
+        handler.logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
         response = handler.apply_connectivity_changes(request)
-        handler.logger.info('finished applying connectivity changes responce is:\n{0}'.format(str(response)))
+        handler.logger.info('Finished applying connectivity changes, responce is: {0}'.format(str(response)))
         handler.logger.info('Apply Connectivity changes completed')
         return response
 
@@ -56,7 +57,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         handler = inject.instance('handler')
-        response = handler.backup_configuration(destination_host, source_filename, vrf)
+        response = handler.save_configuration(destination_host, source_filename, vrf)
         handler.logger.info('Save completed')
         return response
 

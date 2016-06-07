@@ -1,16 +1,11 @@
 import re
-
-from cloudshell.networking.cisco.ios.cisco_ios_handler import CiscoIOSHandler
+from cloudshell.networking.cisco.autoload.cisco_generic_snmp_autoload import CiscoGenericSNMPAutoload
+from cloudshell.networking.cisco.cisco_configuration_operations import CiscoConfigurationOperations
+from cloudshell.networking.cisco.cisco_connectivity_operations import CiscoConnectivityOperations
+from cloudshell.networking.cisco.cisco_send_command_operations import CiscoSendCommandOperations
 from cloudshell.shell.core.context_utils import get_decrypted_password_by_attribute_name_wrapper
 
-my_handler = CiscoIOSHandler
 
-
-def get_handler():
-    return my_handler
-
-
-HANDLER_CLASS = CiscoIOSHandler
 DEFAULT_PROMPT = '.*>\s*$|.*#\s*$'
 ENABLE_PROMPT = '.*#\s*$'
 CONFIG_MODE_PROMPT = '\(config.*\)#\s*$'
@@ -31,6 +26,7 @@ def send_default_actions(session):
 ENTER_CONFIG_MODE_PROMPT_COMMAND = 'configure terminal'
 EXIT_CONFIG_MODE_PROMPT_COMMAND = 'exit'
 DEFAULT_ACTIONS = send_default_actions
+SUPPORTED_OS = ['IOS', 'IOS-XE', 'CATOS']
 
 
 def enter_enable_mode(session):
@@ -40,3 +36,10 @@ def enter_enable_mode(session):
     result = session.hardware_expect('', re_string=DEFAULT_PROMPT + '|' + ENABLE_PROMPT)
     if not re.search(ENABLE_PROMPT, result):
         raise Exception('enter_enable_mode', 'Enable password is incorrect')
+
+
+CONNECTIVITY_OPERATIONS_CLASS = CiscoConnectivityOperations
+CONFIGURATION_OPERATIONS_CLASS = CiscoConfigurationOperations
+FIRMWARE_OPERATIONS_CLASS = CiscoConfigurationOperations
+AUTOLOAD_OPERATIONS_CLASS = CiscoGenericSNMPAutoload
+SEND_COMMAND_OPERATIONS_CLASS = CiscoSendCommandOperations

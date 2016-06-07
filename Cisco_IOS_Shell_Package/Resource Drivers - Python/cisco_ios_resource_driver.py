@@ -109,7 +109,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
         handler = inject.instance("handler")
         result_str = handler.send_config_command(command=command)
-        return handler.normalize_output(result_str)
+        return result_str
 
     @context_from_args
     def shutdown(self, context):

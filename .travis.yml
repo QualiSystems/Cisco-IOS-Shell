@@ -3,8 +3,8 @@ python:
 - '2.7'
 
 before_install:
-- pip install -r requirements.txt
-- pip install -r test_requirements.txt
+- pip install -r requirements.txt -i https://testpypi.python.org/pypi
+- pip install -r test_requirements.txt -i https://testpypi.python.org/pypi
 
 install:
     - python setup.py install

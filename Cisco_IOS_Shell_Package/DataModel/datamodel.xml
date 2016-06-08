@@ -22,37 +22,37 @@
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="System Name" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Contact Name" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="OS Version" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Version" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Vendor" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Location" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
@@ -63,7 +63,7 @@
       </Rules>
     </AttributeInfo>
 	<AttributeInfo xsi:type="LookupAttributeDetails" Name="Protocol Type" Type="Lookup" DefaultValue="Transparent" IsReadOnly="true" IsCommand="false">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
        <Rule Name="Constant Capability" />
@@ -73,7 +73,7 @@
             </LookupValues>
         </AttributeInfo>
     <AttributeInfo Name="Model" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
       	<Rule Name="Setting" />
 	       <Rule Name="Available For Abstract Resources" />
       </Rules>
@@ -146,55 +146,55 @@
             </LookupValues>
         </AttributeInfo>
     <AttributeInfo Name="Serial Number" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="MAC Address" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="L2 Protocol Type" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
        <Rule Name="Setting" />
        <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="IPv4 Address" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="IPv6 Address" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Port Description" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Bandwidth" Type="Numeric" DefaultValue="0" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="MTU" Type="Numeric" DefaultValue="0" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
       	<Rule Name="Setting" />
 	      <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo xsi:type="LookupAttributeDetails" Name="Duplex" Type="Lookup" DefaultValue="Half" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
         <Rule Name="Setting" />
         <Rule Name="Available For Abstract Resources" />
       </Rules>
@@ -204,19 +204,19 @@
       </LookupValues>
     </AttributeInfo>
     <AttributeInfo Name="Adjacent" Type="String" DefaultValue="" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Auto Negotiation" Type="Boolean" DefaultValue="False" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>
     </AttributeInfo>
     <AttributeInfo Name="Associated Ports" Type="String" DefaultValue="" Description="in the format &quot;[portResourceName],...&quot;, for example &quot;GE0-0-0-1,GE-0-0-0-2&quot;" IsReadOnly="true">
-      <Rules>
+      <Rules Override="false">
 	     <Rule Name="Setting" />
 	     <Rule Name="Available For Abstract Resources" />
       </Rules>

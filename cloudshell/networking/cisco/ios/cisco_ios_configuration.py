@@ -6,8 +6,8 @@ from cloudshell.networking.cisco.cisco_send_command_operations import CiscoSendC
 from cloudshell.shell.core.context_utils import get_decrypted_password_by_attribute_name_wrapper
 
 
-DEFAULT_PROMPT = '.*>\s*$|.*#\s*$'
-ENABLE_PROMPT = '.*#\s*$'
+DEFAULT_PROMPT = '[>#]\s*$'
+ENABLE_PROMPT = '#\s*$'
 CONFIG_MODE_PROMPT = '\(config.*\)#\s*$'
 
 

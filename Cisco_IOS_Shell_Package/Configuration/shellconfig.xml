@@ -4,7 +4,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSchema.xsd">
 <ResourceTemplates>
-    <ResourceTemplate Name="Cisco NXOS Switch" Model="Cisco NXOS Switch" Driver="Generic Cisco NXOS Driver Version2">
+    <ResourceTemplate Name="Cisco IOS Switch" Model="Cisco IOS Switch" Driver="Generic Cisco IOS Driver Version2">
         <Description>vCenter template will create a vCenter resource in CloudShell. Once the vCenter is modeled correctly in CloudShell it will be possible to deploy Apps on this vCenter.</Description>
         <AutoLoad Enable="true">
             <Description>Checks that the inputs are valid for the target vCenter</Description>
@@ -27,6 +27,31 @@ xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSch
 			<Attribute Name="Backup Location" Value="" />
 			<Attribute Name="Sessions Concurrency Limit" Value="1" />
 			<Attribute Name="Power Management" Value="False" />
+        </Attributes>
+    </ResourceTemplate>
+        <ResourceTemplate Name="Cisco IOS Router" Model="Cisco IOS Router" Driver="Generic Cisco IOS Driver Version2">
+        <Description>vCenter template will create a vCenter resource in CloudShell. Once the vCenter is modeled correctly in CloudShell it will be possible to deploy Apps on this vCenter.</Description>
+        <AutoLoad Enable="true">
+            <Description>Checks that the inputs are valid for the target vCenter</Description>
+        </AutoLoad>
+        <Attributes>
+            <Attribute Name="SNMP Version" Value="" />
+            <Attribute Name="SNMP Read Community" Value="" />
+            <Attribute Name="SNMP Write Community" Value="" />
+            <Attribute Name="SNMP V3 User" Value="" />
+            <Attribute Name="SNMP V3 Password" Value="" />
+            <Attribute Name="SNMP V3 Private Key" Value="" />
+            <Attribute Name="CLI Connection Type" Value="Auto" />
+            <Attribute Name="User" Value="" />
+            <Attribute Name="Password" Value="" />
+            <Attribute Name="Enable Password" Value="" />
+            <Attribute Name="Console Server IP Address" Value="" />
+            <Attribute Name="Console Port" Value="0" />
+            <Attribute Name="Console User" Value="" />
+            <Attribute Name="Console Password" Value="" />
+            <Attribute Name="Backup Location" Value="" />
+            <Attribute Name="Sessions Concurrency Limit" Value="1" />
+            <Attribute Name="Power Management" Value="False" />
         </Attributes>
     </ResourceTemplate>
 </ResourceTemplates>

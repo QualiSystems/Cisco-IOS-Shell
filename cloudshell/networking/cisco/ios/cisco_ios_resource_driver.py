@@ -12,7 +12,7 @@ import cloudshell.networking.cisco.ios.cisco_ios_configuration as driver_config
 class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverInterface, GlobalLock):
 
     def __init__(self):
-        super(GlobalLock, self).__init__()
+        super(CiscoIOSResourceDriver, self).__init__()
         bootstrap = NetworkingGenericBootstrap()
         bootstrap.add_config(driver_config)
         bootstrap.initialize()

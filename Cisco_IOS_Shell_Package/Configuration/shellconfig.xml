@@ -5,9 +5,15 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSchema.xsd">
 <ResourceTemplates>
     <ResourceTemplate Name="Cisco IOS Switch" Model="Cisco IOS Switch" Driver="Generic Cisco IOS Driver Version2">
+<<<<<<< HEAD
+        <Description>The networking Shell template will create a resource of this type in CloudShell. Once the Switch is modeled correctly in CloudShell it will be possible to use it in Sandboxes and for connectivity.</Description>
+        <AutoLoad Enable="true">
+            <Description>Discovers the device structure and populate its attributes.</Description>
+=======
         <Description>vCenter template will create a vCenter resource in CloudShell. Once the vCenter is modeled correctly in CloudShell it will be possible to deploy Apps on this vCenter.</Description>
         <AutoLoad Enable="true">
             <Description>Checks that the inputs are valid for the target vCenter</Description>
+>>>>>>> dev
         </AutoLoad>
         <Attributes>
             <Attribute Name="SNMP Version" Value="" />
@@ -30,9 +36,15 @@ xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSch
         </Attributes>
     </ResourceTemplate>
         <ResourceTemplate Name="Cisco IOS Router" Model="Cisco IOS Router" Driver="Generic Cisco IOS Driver Version2">
+<<<<<<< HEAD
+        <Description>The networking Shell template will create a resource of this type in CloudShell. Once the Router is modeled correctly in CloudShell it will be possible to use it in Sandboxes and for connectivity.</Description>
+        <AutoLoad Enable="true">
+            <Description>Discovers the device structure and populate its attributes.</Description>
+=======
         <Description>vCenter template will create a vCenter resource in CloudShell. Once the vCenter is modeled correctly in CloudShell it will be possible to deploy Apps on this vCenter.</Description>
         <AutoLoad Enable="true">
             <Description>Checks that the inputs are valid for the target vCenter</Description>
+>>>>>>> dev
         </AutoLoad>
         <Attributes>
             <Attribute Name="SNMP Version" Value="" />

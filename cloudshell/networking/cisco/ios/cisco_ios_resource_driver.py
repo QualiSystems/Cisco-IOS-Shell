@@ -4,12 +4,15 @@ from cloudshell.networking.generic_bootstrap import NetworkingGenericBootstrap
 from cloudshell.networking.networking_resource_driver_interface import NetworkingResourceDriverInterface
 from cloudshell.shell.core.context_utils import context_from_args
 from cloudshell.shell.core.resource_driver_interface import ResourceDriverInterface
+from cloudshell.shell.core.driver_utils import GlobalLock
 
 import cloudshell.networking.cisco.ios.cisco_ios_configuration as driver_config
 
 
-class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverInterface):
+class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverInterface, GlobalLock):
+
     def __init__(self):
+        super(GlobalLock, self).__init__()
         bootstrap = NetworkingGenericBootstrap()
         bootstrap.add_config(driver_config)
         bootstrap.initialize()
@@ -35,6 +38,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         connectivity_operations.logger.info('Apply Connectivity changes completed')
         return response
 
+    @GlobalLock.lock
     @context_from_args
     def restore(self, context, path, config_type, restore_method, vrf=None):
         """Restore selected file to the provided destination
@@ -76,6 +80,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         autoload_operations.logger.info('Autoload completed')
         return response
 
+    @GlobalLock.lock
     @context_from_args
     def update_firmware(self, context, remote_host, file_path):
         """Upload and updates firmware on the resource

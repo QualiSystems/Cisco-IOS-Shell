@@ -4,7 +4,7 @@ from cloudshell.networking.cisco.cisco_configuration_operations import CiscoConf
 from cloudshell.networking.cisco.cisco_connectivity_operations import CiscoConnectivityOperations
 from cloudshell.networking.cisco.cisco_send_command_operations import CiscoSendCommandOperations
 from cloudshell.shell.core.context_utils import get_decrypted_password_by_attribute_name_wrapper
-
+from cloudshell.shell.core.dependency_injection.context_based_logger import get_logger_with_thread_id
 
 DEFAULT_PROMPT = '[>#]\s*$'
 ENABLE_PROMPT = '#\s*$'
@@ -43,3 +43,6 @@ CONFIGURATION_OPERATIONS_CLASS = CiscoConfigurationOperations
 FIRMWARE_OPERATIONS_CLASS = CiscoConfigurationOperations
 AUTOLOAD_OPERATIONS_CLASS = CiscoGenericSNMPAutoload
 SEND_COMMAND_OPERATIONS_CLASS = CiscoSendCommandOperations
+
+GET_LOGGER_FUNCTION = get_logger_with_thread_id
+POOL_TIMEOUT = 300

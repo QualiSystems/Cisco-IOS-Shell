@@ -5,10 +5,11 @@ from cloudshell.networking.cisco.cisco_connectivity_operations import CiscoConne
 from cloudshell.networking.cisco.cisco_send_command_operations import CiscoSendCommandOperations
 from cloudshell.shell.core.context_utils import get_decrypted_password_by_attribute_name_wrapper
 
-
 DEFAULT_PROMPT = '[>#]\s*$'
 ENABLE_PROMPT = '#\s*$'
 CONFIG_MODE_PROMPT = '\(config.*\)#\s*$'
+
+POOL_TIMEOUT = 120
 
 
 def send_default_actions(session):
@@ -30,10 +31,12 @@ SUPPORTED_OS = ['IOS', 'IOS-XE', 'CATOS']
 
 
 def enter_enable_mode(session):
-    session.hardware_expect('enable', re_string=DEFAULT_PROMPT + '|' + ENABLE_PROMPT,
-                            expect_map={'[Pp]assword': lambda session: session.send_line(
-                                get_decrypted_password_by_attribute_name_wrapper('Enable Password')())})
-    result = session.hardware_expect('', re_string=DEFAULT_PROMPT + '|' + ENABLE_PROMPT)
+    result = session.hardware_expect('', re_string=DEFAULT_PROMPT)
+    if not re.search(ENABLE_PROMPT, result):
+        session.hardware_expect('enable', re_string=DEFAULT_PROMPT,
+                                expect_map={'[Pp]assword': lambda session: session.send_line(
+                                    get_decrypted_password_by_attribute_name_wrapper('Enable Password')())})
+    result = session.hardware_expect('', re_string=DEFAULT_PROMPT)
     if not re.search(ENABLE_PROMPT, result):
         raise Exception('enter_enable_mode', 'Enable password is incorrect')
 

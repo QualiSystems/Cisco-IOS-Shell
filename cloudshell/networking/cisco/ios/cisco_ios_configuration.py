@@ -15,6 +15,7 @@ def send_default_actions(session):
     """Send default commands to configure/clear session outputs
     :return:
     """
+
     enter_enable_mode(session=session)
     session.hardware_expect('terminal length 0', ENABLE_PROMPT)
     session.hardware_expect('terminal no exec prompt timestamp', ENABLE_PROMPT)
@@ -30,10 +31,12 @@ SUPPORTED_OS = ['IOS', 'IOS-XE', 'CATOS']
 
 
 def enter_enable_mode(session):
-    session.hardware_expect('enable', re_string=DEFAULT_PROMPT + '|' + ENABLE_PROMPT,
-                            expect_map={'[Pp]assword': lambda session: session.send_line(
-                                get_decrypted_password_by_attribute_name_wrapper('Enable Password')())})
-    result = session.hardware_expect('', re_string=DEFAULT_PROMPT + '|' + ENABLE_PROMPT)
+    result = session.hardware_expect('', re_string=DEFAULT_PROMPT)
+    if not re.search(ENABLE_PROMPT, result):
+        session.hardware_expect('enable', re_string=DEFAULT_PROMPT,
+                                expect_map={'[Pp]assword': lambda session: session.send_line(
+                                    get_decrypted_password_by_attribute_name_wrapper('Enable Password')())})
+    result = session.hardware_expect('', re_string=DEFAULT_PROMPT)
     if not re.search(ENABLE_PROMPT, result):
         raise Exception('enter_enable_mode', 'Enable password is incorrect')
 

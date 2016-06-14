@@ -10,7 +10,6 @@ import cloudshell.networking.cisco.ios.cisco_ios_configuration as driver_config
 
 
 class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverInterface, GlobalLock):
-
     def __init__(self):
         super(CiscoIOSResourceDriver, self).__init__()
         bootstrap = NetworkingGenericBootstrap()
@@ -48,11 +47,11 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :param restore_method: append or override methods
         """
 
-        handler = inject.instance('handler')
-        response = handler.restore_configuration(source_file=path, restore_method=restore_method,
-                                                 config_type=config_type, vrf=vrf)
-        handler.logger.info('Restore completed')
-        handler.logger.info(response)
+        configuration_operations = inject.instance('configuration_operations')
+        response = configuration_operations.restore_configuration(source_file=path, restore_method=restore_method,
+                                                                  config_type=config_type, vrf=vrf)
+        configuration_operations.logger.info('Restore completed')
+        configuration_operations.logger.info(response)
 
     @context_from_args
     def save(self, context, destination_host, source_filename, vrf=None):

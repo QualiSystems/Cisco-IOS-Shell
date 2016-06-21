@@ -27,7 +27,7 @@ def send_default_actions(session):
 ENTER_CONFIG_MODE_PROMPT_COMMAND = 'configure terminal'
 EXIT_CONFIG_MODE_PROMPT_COMMAND = 'exit'
 DEFAULT_ACTIONS = send_default_actions
-SUPPORTED_OS = ['IOS', 'IOS-XE', 'CATOS']
+SUPPORTED_OS = ["CAT[ -]?OS", "IOS[ -]?X?[ER]?"]
 
 
 def enter_enable_mode(session):

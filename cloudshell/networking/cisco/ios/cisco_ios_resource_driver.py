@@ -119,7 +119,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         firmware_operations.logger.info(response)
 
     @context_from_args
-    def send_custom_command(self, context, custom_command):
+    def run_custom_command(self, context, custom_command):
         """Send custom command
 
         :return: result
@@ -140,7 +140,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         return state_operations.health_check()
 
     @context_from_args
-    def send_custom_config_command(self, context, custom_command):
+    def run_custom_config_command(self, context, custom_command):
         """Send custom command in configuration mode
 
         :return: result

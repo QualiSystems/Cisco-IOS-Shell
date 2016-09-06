@@ -9,6 +9,11 @@
           <Parameter Name="custom_command" Type="String" Mandatory="True" DefaultValue="" Description=""/>
         </Parameters>
       </Command>
+      <Command Name="send_custom_config_command" DisplayName="Send Custom Config Command" Tags="">
+        <Parameters>
+          <Parameter Name="custom_command" Type="String" Mandatory="True" DefaultValue="" Description=""/>
+        </Parameters>
+      </Command>
       <Command Name="ApplyConnectivityChanges" DisplayName="ApplyConnectivityChanges" Tags="allow_unreserved">
         <Parameters>
           <Parameter Name="request" Type="String" Mandatory="True" DefaultValue="" Description=""/>

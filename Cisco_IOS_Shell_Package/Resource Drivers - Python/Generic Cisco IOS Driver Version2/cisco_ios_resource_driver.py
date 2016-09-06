@@ -43,7 +43,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
     @GlobalLock.lock
     @context_from_args
-    def restore(self, context, path, configuration_type='running', restore_method='override', vrf_management_name=None):
+    def restore(self, context, path, configuration_type, restore_method, vrf_management_name=None):
         """Restore selected file to the provided destination
 
         :param path: source config file
@@ -51,6 +51,12 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :param restore_method: append or override methods
         :param vrf_management_name: VRF management Name
         """
+
+        if not configuration_type:
+            configuration_type = 'running'
+
+        if not restore_method:
+            restore_method = 'override'
 
         configuration_operations = CiscoConfigurationOperations()
         response = configuration_operations.restore(path=path, restore_method=restore_method,
@@ -68,13 +74,20 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :param vrf_management_name: VRF management Name
         """
 
+        if not configuration_type:
+            configuration_type = 'running'
+
         configuration_operations = CiscoConfigurationOperations()
         response = configuration_operations.save(folder_path, configuration_type, vrf_management_name)
         configuration_operations.logger.info('Save completed')
         return response
 
     @context_from_args
-    def orchestration_save(self, context, mode="shallow", custom_params=None):
+    def orchestration_save(self, context, mode, custom_params=None):
+
+        if not mode:
+            mode = 'shallow'
+
         configuration_operations = CiscoConfigurationOperations()
         configuration_operations.logger.info('Orchestration save started')
         response = configuration_operations.orchestration_save(mode=mode, custom_params=custom_params)

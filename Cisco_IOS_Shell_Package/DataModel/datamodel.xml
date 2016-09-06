@@ -18,7 +18,7 @@
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Power Management" Type="Boolean" DefaultValue="False" IsReadOnly="false">
+        <AttributeInfo Name="Power Management" Type="Boolean" DefaultValue="True" IsReadOnly="false">
             <Rules>
                 <Rule Name="Configuration"/>
             </Rules>

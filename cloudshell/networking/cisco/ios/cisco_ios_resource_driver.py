@@ -1,7 +1,7 @@
 from cloudshell.networking.cisco.autoload.cisco_generic_snmp_autoload import CiscoGenericSNMPAutoload
 from cloudshell.networking.cisco.cisco_configuration_operations import CiscoConfigurationOperations
 from cloudshell.networking.cisco.cisco_connectivity_operations import CiscoConnectivityOperations
-from cloudshell.networking.cisco.cisco_send_command_operations import CiscoSendCommandOperations
+from cloudshell.networking.cisco.cisco_run_command_operations import CiscoRunCommandOperations
 from cloudshell.networking.cisco.cisco_state_operations import CiscoStateOperations
 
 from cloudshell.networking.networking_resource_driver_interface import NetworkingResourceDriverInterface
@@ -139,7 +139,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        send_command_operations = CiscoSendCommandOperations()
+        send_command_operations = CiscoRunCommandOperations()
         response = send_command_operations.send_command(command=custom_command)
         return response
 
@@ -159,7 +159,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :return: result
         :rtype: string
         """
-        send_command_operations = CiscoSendCommandOperations()
+        send_command_operations = CiscoRunCommandOperations()
         result_str = send_command_operations.send_config_command(command=custom_command)
         return result_str
 

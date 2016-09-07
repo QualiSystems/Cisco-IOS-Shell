@@ -140,7 +140,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         send_command_operations = CiscoRunCommandOperations()
-        response = send_command_operations.send_command(command=custom_command)
+        response = send_command_operations.run_custom_command(command=custom_command)
         return response
 
     @context_from_args
@@ -160,7 +160,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
         send_command_operations = CiscoRunCommandOperations()
-        result_str = send_command_operations.send_config_command(command=custom_command)
+        result_str = send_command_operations.run_custom_config_command(command=custom_command)
         return result_str
 
     @GlobalLock.lock
@@ -177,6 +177,30 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         firmware_operations = CiscoConfigurationOperations()
         response = firmware_operations.load_firmware(path=remote_host)
         firmware_operations.logger.info(response)
+
+    @context_from_args
+    def send_custom_command(self, context, command):
+        """Send custom command in configuration mode
+
+        :return: result
+        :rtype: string
+        """
+
+        send_command_operations = CiscoRunCommandOperations()
+        response = send_command_operations.run_custom_command(command=command)
+        return response
+
+    @context_from_args
+    def send_custom_config_command(self, context, command):
+        """Send custom command in configuration mode
+
+        :return: result
+        :rtype: string
+        """
+
+        send_command_operations = CiscoRunCommandOperations()
+        result_str = send_command_operations.run_custom_config_command(command=command)
+        return result_str
 
     @context_from_args
     def shutdown(self, context):

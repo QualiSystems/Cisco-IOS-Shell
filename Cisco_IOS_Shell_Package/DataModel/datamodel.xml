@@ -363,7 +363,7 @@
                         <AttributeValue Name="Backup Location" Value=""/>
                         <AttributeValue Name="Backup User" Value=""/>
                         <AttributeValue Name="Backup Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
-                        <AttributeValue Name="Backup Type" Value=""/>
+                        <AttributeValue Name="Backup Type" Value="File System"/>
                         <AttributeValue Name="Model" Value=""/>
                         <AttributeValue Name="SNMP Read Community" Value=""/>
                         <AttributeValue Name="SNMP V3 Password" Value=""/>
@@ -375,10 +375,11 @@
                         <AttributeValue Name="Console Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
                         <AttributeValue Name="Console Port" Value="0"/>
                         <AttributeValue Name="CLI TCP Port" Value="0"/>
+                        <AttributeValue Name="Sessions Concurrency Limit" Value="1"/>
                         <AttributeValue Name="Console Server IP Address" Value=""/>
                         <AttributeValue Name="Console User" Value=""/>
                         <AttributeValue Name="CLI Connection Type" Value="Auto"/>
-                        <AttributeValue Name="Power Management" Value="False"/>
+                        <AttributeValue Name="Power Management" Value="True"/>
                         <AttributeValue Name="Enable SNMP" Value="True"/>
                         <AttributeValue Name="Disable SNMP" Value="False"/>
                     </AttributeValues>

@@ -59,12 +59,12 @@ xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSch
                 <Attribute Name="Console Port" Value="0" />
                 <Attribute Name="Console User" Value="" />
                 <Attribute Name="Console Password" Value="" />
-                <Attribute Name="Backup Type" Value="" />
+                <Attribute Name="Backup Type" Value="File System" />
                 <Attribute Name="Backup User" Value="" />
                 <Attribute Name="Backup Password" Value="" />
                 <Attribute Name="Backup Location" Value="" />
                 <Attribute Name="Sessions Concurrency Limit" Value="1" />
-                <Attribute Name="Power Management" Value="False" />
+                <Attribute Name="Power Management" Value="True" />
                 <Attribute Name="VRF Management Name" Value="" />
             </Attributes>
         </ResourceTemplate>

@@ -187,7 +187,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         send_command_operations = CiscoRunCommandOperations()
-        response = send_command_operations.run_custom_command(command=command)
+        response = send_command_operations.run_custom_command(custom_command=command)
         return response
 
     @context_from_args
@@ -199,7 +199,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         send_command_operations = CiscoRunCommandOperations()
-        result_str = send_command_operations.run_custom_config_command(command=command)
+        result_str = send_command_operations.run_custom_config_command(custom_command=command)
         return result_str
 
     @context_from_args

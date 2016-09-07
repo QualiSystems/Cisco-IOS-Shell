@@ -38,7 +38,7 @@
     </Category>
     <Command Name="run_custom_command" DisplayName="Run Custom Command" Tags="" Description="Executes any custom command entered in the input on the device.">
       <Parameters>
-        <Parameter Name="custom_command" Type="String" Mandatory="True" DefaultValue=""
+        <Parameter Name="custom_command" DisplayName="Custom Command" Type="String" Mandatory="True" DefaultValue=""
                    Description="The command to execute. Note that commands that require a reponse aren't supported."/>
       </Parameters>
     </Command>

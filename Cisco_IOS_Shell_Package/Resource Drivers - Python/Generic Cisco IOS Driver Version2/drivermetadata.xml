@@ -37,8 +37,13 @@
             </Command>
             <Command Name="send_custom_command" DisplayName="Send Custom Command" Tags="" Description="Executes any custom command entered in the input on the device.">
                 <Parameters>
-                    <Parameter Name="command" DisplayName="Command" Type="String" Mandatory="True" DefaultValue=""
+                    <Parameter Name="custom_command" DisplayName="Command" Type="String" Mandatory="True" DefaultValue=""
                                Description="The command to execute. Note that commands that require a reponse aren't supported."/>
+                </Parameters>
+            </Command>
+            <Command Name="send_custom_config_command" DisplayName="Run Custom Config Command" Tags="">
+                <Parameters>
+                    <Parameter Name="custom_command" Type="String" Mandatory="True" DefaultValue="" Description=""/>
                 </Parameters>
             </Command>
         </Category>

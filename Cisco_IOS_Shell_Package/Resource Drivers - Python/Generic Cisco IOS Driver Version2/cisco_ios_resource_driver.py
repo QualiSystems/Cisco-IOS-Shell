@@ -83,7 +83,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         return response
 
     @context_from_args
-    def orchestration_save(self, context, mode, custom_params=None):
+    def orchestration_save(self, context, mode="shallow", custom_params=None):
 
         if not mode:
             mode = 'shallow'
@@ -179,7 +179,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         firmware_operations.logger.info(response)
 
     @context_from_args
-    def send_custom_command(self, context, command):
+    def send_custom_command(self, context, custom_command):
         """Send custom command in configuration mode
 
         :return: result
@@ -187,11 +187,11 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         send_command_operations = CiscoRunCommandOperations()
-        response = send_command_operations.run_custom_command(custom_command=command)
+        response = send_command_operations.run_custom_command(custom_command=custom_command)
         return response
 
     @context_from_args
-    def send_custom_config_command(self, context, command):
+    def send_custom_config_command(self, context, custom_command):
         """Send custom command in configuration mode
 
         :return: result
@@ -199,7 +199,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         send_command_operations = CiscoRunCommandOperations()
-        result_str = send_command_operations.run_custom_config_command(custom_command=command)
+        result_str = send_command_operations.run_custom_config_command(custom_command=custom_command)
         return result_str
 
     @context_from_args

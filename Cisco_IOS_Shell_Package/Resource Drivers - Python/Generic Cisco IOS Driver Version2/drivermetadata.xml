@@ -24,7 +24,7 @@
                 <Parameters>
                     <Parameter Name="saved_artifact_info" Type="String" Mandatory="True" DefaultValue=""
                                Description=""/>
-                    <Parameter Name="custom_params" Type="String" Mandatory="True" DefaultValue="" Description=""/>
+                    <Parameter Name="custom_params" Type="String" Mandatory="False" DefaultValue="" Description=""/>
                 </Parameters>
             </Command>
             <Command Name="update_firmware" DisplayName="Load Firmware" Tags="" Description="Loads a firmware onto the device">

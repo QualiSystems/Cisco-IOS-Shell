@@ -1,3 +1,7 @@
+from cloudshell.core.logger.qs_logger import get_qs_logger
+from cloudshell.shell.core.session.logging_session import LoggingSessionContext
+from cloudshell.snmp.command_context_snmp_helpers import get_snmp_parameters_from_command_context
+from cloudshell.snmp.quali_snmp import QualiSnmp
 from cloudshell.networking.cisco.autoload.cisco_generic_snmp_autoload import CiscoGenericSNMPAutoload
 from cloudshell.networking.cisco.cisco_configuration_operations import CiscoConfigurationOperations
 from cloudshell.networking.cisco.cisco_connectivity_operations import CiscoConnectivityOperations
@@ -20,7 +24,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         bootstrap.add_config(driver_config)
         bootstrap.initialize()
 
-    @context_from_args
     def initialize(self, context):
         """Initialize method
         :type context: cloudshell.shell.core.context.driver_context.InitCommandContext
@@ -31,7 +34,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def cleanup(self):
         pass
 
-    @context_from_args
     def ApplyConnectivityChanges(self, context, request):
         connectivity_operations = CiscoConnectivityOperations()
         connectivity_operations.logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
@@ -42,7 +44,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         return response
 
     @GlobalLock.lock
-    @context_from_args
     def restore(self, context, path, configuration_type, restore_method, vrf_management_name=None):
         """Restore selected file to the provided destination
 
@@ -65,7 +66,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         configuration_operations.logger.info('Restore completed')
         configuration_operations.logger.info(response)
 
-    @context_from_args
     def save(self, context, folder_path, configuration_type, vrf_management_name=None):
         """Save selected file to the provided destination
 
@@ -82,8 +82,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         configuration_operations.logger.info('Save completed')
         return response
 
-    @context_from_args
-    def orchestration_save(self, context, mode, custom_params=None):
+    def orchestration_save(self, context, mode="shallow", custom_params=None):
 
         if not mode:
             mode = 'shallow'
@@ -94,15 +93,13 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         configuration_operations.logger.info('Orchestration save completed')
         return response
 
-    @context_from_args
     def orchestration_restore(self, context, saved_artifact_info, custom_params=None):
         configuration_operations = CiscoConfigurationOperations()
         configuration_operations.logger.info('Orchestration restore started')
         configuration_operations.orchestration_restore(saved_artifact_info=saved_artifact_info,
                                                        custom_params=custom_params)
         configuration_operations.logger.info('Orchestration restore completed')
-
-    @context_from_args
+    
     def get_inventory(self, context):
         """Return device structure with all standard attributes
 
@@ -110,14 +107,22 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        autoload_operations = CiscoGenericSNMPAutoload()
-        autoload_operations.logger.info('Autoload started')
-        response = autoload_operations.discover()
-        autoload_operations.logger.info('Autoload completed')
-        return response
+        with LoggingSessionContext(context) as logger:
+            snmp_handler = self._get_snmp_handler(context, logger)
+            autoload_operations = CiscoGenericSNMPAutoload(snmp_handler=snmp_handler, logger=logger)
+            autoload_operations.logger.info('Autoload started')
+            response = autoload_operations.discover()
+            autoload_operations.logger.info('Autoload completed')
+            return response
+
+    def _get_logger(self, context):
+        return LoggingSessionContext(context)
+
+    def _get_snmp_handler(self, context, logger):
+        snmp_handler_params = get_snmp_parameters_from_command_context(context)
+        return QualiSnmp(snmp_parameters=snmp_handler_params, logger=logger)
 
     @GlobalLock.lock
-    @context_from_args
     def load_firmware(self, context, path, vrf_management_name=None):
         """Upload and updates firmware on the resource
 
@@ -131,7 +136,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         response = firmware_operations.load_firmware(path=path, vrf_management_name=vrf_management_name)
         firmware_operations.logger.info(response)
 
-    @context_from_args
     def run_custom_command(self, context, custom_command):
         """Send custom command
 
@@ -143,7 +147,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         response = send_command_operations.run_custom_command(custom_command=custom_command)
         return response
 
-    @context_from_args
     def health_check(self, context):
         """Performs device health check
 
@@ -152,7 +155,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         state_operations = CiscoStateOperations()
         return state_operations.health_check()
 
-    @context_from_args
     def run_custom_config_command(self, context, custom_command):
         """Send custom command in configuration mode
 
@@ -164,7 +166,6 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         return result_str
 
     @GlobalLock.lock
-    @context_from_args
     def update_firmware(self, context, remote_host, file_path):
         """Upload and updates firmware on the resource
 
@@ -178,8 +179,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         response = firmware_operations.load_firmware(path=remote_host)
         firmware_operations.logger.info(response)
 
-    @context_from_args
-    def send_custom_command(self, context, command):
+    def send_custom_command(self, context, custom_command):
         """Send custom command in configuration mode
 
         :return: result
@@ -187,11 +187,10 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         send_command_operations = CiscoRunCommandOperations()
-        response = send_command_operations.run_custom_command(custom_command=command)
+        response = send_command_operations.run_custom_command(custom_command=custom_command)
         return response
 
-    @context_from_args
-    def send_custom_config_command(self, context, command):
+    def send_custom_config_command(self, context, custom_command):
         """Send custom command in configuration mode
 
         :return: result
@@ -199,9 +198,8 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         send_command_operations = CiscoRunCommandOperations()
-        result_str = send_command_operations.run_custom_config_command(custom_command=command)
+        result_str = send_command_operations.run_custom_config_command(custom_command=custom_command)
         return result_str
 
-    @context_from_args
     def shutdown(self, context):
         pass

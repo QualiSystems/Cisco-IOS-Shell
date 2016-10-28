@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ShellsConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSchema.xsd">
 <ResourceTemplates>
-    <ResourceTemplate Name="CiscoIosShell" Model="CiscoIosShell" Driver="CiscoIosShellDriver">
+    <ResourceTemplate Name="Ciscoiosshell" Model="Ciscoiosshell" Driver="CiscoiosshellDriver">
         <Description></Description>
         <AutoLoad Enable="false">
             <Description>Description for autoload </Description>
@@ -9,6 +9,8 @@
         <Attributes>
             <Attribute Name="User" Value="" />
             <Attribute Name="Password" Value="" />
+            <Attribute Name="CLI TCP Port" Value="0" />
+            <Attribute Name="CLI Connection Type" Value="Auto" />
         </Attributes>
     </ResourceTemplate>    
 </ResourceTemplates>

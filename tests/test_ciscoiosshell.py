@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 
 """
-Tests for `CiscoIosShellDriver`
+Tests for `CiscoiosshellDriver`
 """
 
 import unittest
 
-from driver import CiscoIosShellDriver
+from driver import CiscoiosshellDriver
 
 
-class TestCiscoIosShellDriver(unittest.TestCase):
+class TestCiscoiosshellDriver(unittest.TestCase):
 
     def setUp(self):
         pass

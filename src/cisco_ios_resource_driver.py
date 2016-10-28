@@ -1,6 +1,5 @@
-from cloudshell.core.logger.qs_logger import get_qs_logger
 from cloudshell.shell.core.session.logging_session import LoggingSessionContext
-from cloudshell.snmp.command_context_snmp_helpers import get_snmp_parameters_from_command_context
+from cloudshell.networking.command_context_snmp_helpers import get_snmp_parameters_from_command_context
 from cloudshell.snmp.quali_snmp import QualiSnmp
 from cloudshell.networking.cisco.autoload.cisco_generic_snmp_autoload import CiscoGenericSNMPAutoload
 from cloudshell.networking.cisco.cisco_configuration_operations import CiscoConfigurationOperations
@@ -9,7 +8,6 @@ from cloudshell.networking.cisco.cisco_run_command_operations import CiscoRunCom
 from cloudshell.networking.cisco.cisco_state_operations import CiscoStateOperations
 
 from cloudshell.networking.networking_resource_driver_interface import NetworkingResourceDriverInterface
-from cloudshell.shell.core.context_utils import context_from_args
 from cloudshell.shell.core.driver_bootstrap import DriverBootstrap
 from cloudshell.shell.core.resource_driver_interface import ResourceDriverInterface
 from cloudshell.shell.core.driver_utils import GlobalLock

@@ -4,7 +4,7 @@ from cloudshell.networking.apply_connectivity.apply_connectivity_operation impor
 from package.cloudshell.networking.cisco.ios.autoload.cisco_autoload_operations import CiscoAutoloadOperations
 from cloudshell.networking.cisco.cisco_firmware_operations import CiscoFirmwareOperations
 from cloudshell.shell.core.context_utils import get_attribute_by_name
-from cloudshell.networking.driver_helper import get_logger, get_api, get_cli
+from cloudshell.networking.driver_helper import get_logger_with_thread_id, get_api, get_cli
 from cloudshell.shell.core.context import ResourceContextDetails, ResourceCommandContext, ReservationContextDetails
 from cloudshell.networking.cisco.cisco_configuration_operations import CiscoConfigurationOperations
 from cloudshell.networking.cisco.cisco_connectivity_operations import CiscoConnectivityOperations
@@ -36,7 +36,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
     def ApplyConnectivityChanges(self, context, request):
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
         connectivity_operations = CiscoConnectivityOperations(cli=self._cli, context=context, api=api, logger=logger,
                                                               supported_os=self.SUPPORTED_OS)
@@ -68,7 +68,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         if not vrf_management_name:
             vrf_management_name = get_attribute_by_name(context=context, attribute_name='VRF Management Name')
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
         configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
@@ -93,7 +93,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         if not vrf_management_name:
             vrf_management_name = get_attribute_by_name(context=context, attribute_name='VRF Management Name')
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
         configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
@@ -107,7 +107,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         if not mode:
             mode = 'shallow'
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
         configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
@@ -117,7 +117,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         return response
 
     def orchestration_restore(self, context, saved_artifact_info, custom_params=None):
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
         configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
@@ -134,7 +134,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         autoload_operations = CiscoAutoloadOperations(cli=self._cli, logger=logger, context=context,
                                                       supported_os=self.SUPPORTED_OS)
         autoload_operations.logger.info('Autoload started')
@@ -152,7 +152,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
         if not vrf_management_name:
             vrf_management_name = get_attribute_by_name(context=context, attribute_name='VRF Management Name')
@@ -169,7 +169,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
         send_command_operations = CiscoRunCommandOperations(cli=self._cli, logger=logger, context=context, api=api)
         response = send_command_operations.run_custom_command(custom_command=custom_command)
@@ -180,7 +180,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
         """
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
         state_operations = CiscoStateOperations(cli=self._cli, logger=logger, api=api, context=context)
         return state_operations.health_check()
@@ -192,7 +192,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
         send_command_operations = CiscoRunCommandOperations(cli=self._cli, logger=logger, context=context, api=api)
         result_str = send_command_operations.run_custom_config_command(custom_command=custom_command)
@@ -208,7 +208,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
         vrf_management_name = get_attribute_by_name(context=context, attribute_name='VRF Management Name')
 
@@ -224,7 +224,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
         send_command_operations = CiscoRunCommandOperations(cli=self._cli, logger=logger, context=context, api=api)
         response = send_command_operations.run_custom_command(custom_command=custom_command)
@@ -237,7 +237,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :rtype: string
         """
 
-        logger = get_logger(context)
+        logger = get_logger_with_thread_id(context)
         api = get_api(context)
         send_command_operations = CiscoRunCommandOperations(cli=self._cli, logger=logger, context=context, api=api)
         result_str = send_command_operations.run_custom_config_command(custom_command=custom_command)
@@ -323,8 +323,8 @@ if __name__ == '__main__':
 }"""
 
     tt.initialize(context)
-    Thread(target=tt.health_check, args=(context, )).start()
+    # Thread(target=tt.health_check, args=(context, )).start()
     Thread(target=tt.ApplyConnectivityChanges, args=(context, request)).start()
-    Thread(target=tt.get_inventory, args=(context, )).start()
-    Thread(target=tt.save, args=(context, ' ', ' ', ' ')).start()
-    Thread(target=tt.send_custom_command, args=(context, 'show run')).start()
+    # Thread(target=tt.get_inventory, args=(context, )).start()
+    # Thread(target=tt.save, args=(context, ' ', ' ', ' ')).start()
+    # Thread(target=tt.send_custom_command, args=(context, 'show run')).start()

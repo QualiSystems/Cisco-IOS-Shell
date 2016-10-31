@@ -54,7 +54,7 @@ class CiscoSNMPContextManager(SNMPHandlerCreator):
         with self._cli.get_session(new_sessions=self._session_type, command_mode=self._enable_mode,
                                    logger=self._logger) as session:
             existing_snmp_community = self._snmp_parameters.snmp_community.lower() in session.send_command(
-                'show running-config | include snmp-server community').lower().replace('snmp-server community')
+                'show running-config | include snmp-server community').lower().replace('snmp-server community', '')
 
             if not existing_snmp_community:
                 with session.enter_mode(self._config_mode) as config_session:

@@ -84,7 +84,8 @@ class GenericChassis(BaseResource):
     MODEL = 'model'
     SERIAL_NUMBER = 'serial_number'
 
-    def __init__(self, name, relative_address, resource_model='Generic Chassis', unique_id=None, model='', serial_number=''):
+    def __init__(self, name, relative_address, resource_model='Generic Chassis', unique_id=None, model='',
+                 serial_number=''):
         """
         Represent Generic Chassis resource entity
 

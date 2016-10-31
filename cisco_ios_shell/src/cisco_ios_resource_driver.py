@@ -323,6 +323,6 @@ if __name__ == '__main__':
 }"""
 
     tt.initialize(context)
-    Thread(target=tt.health_check, args=(context, )).start()
-    Thread(target=tt.ApplyConnectivityChanges, args=(context, request)).start()
+    # Thread(target=tt.health_check, args=(context, )).start()
+    # Thread(target=tt.ApplyConnectivityChanges, args=(context, request)).start()
     Thread(target=tt.get_inventory, args=(context, )).start()

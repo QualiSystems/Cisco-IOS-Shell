@@ -1,5 +1,5 @@
 from cloudshell.networking.cisco.autoload.cisco_generic_snmp_autoload import CiscoGenericSNMPAutoload
-from package.cloudshell.networking.cisco.ios.autoload.autoload_structure import GenericPort, GenericPortChannel, \
+from cloudshell.networking.cisco.ios.autoload.autoload_structure import GenericPort, GenericPortChannel, \
     CiscoIOSDevice, GenericChassis, GenericModule, GenericPowerPort
 
 

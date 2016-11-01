@@ -5,7 +5,7 @@ from cloudshell.networking.autoload.snmp_handler_helper import SNMPHandlerCreato
 from cloudshell.networking.cisco.cisco_command_modes import EnableCommandMode, ConfigCommandMode, \
     get_session
 from cloudshell.snmp.snmp_parameters import SNMPV2Parameters
-from package.cloudshell.networking.cisco.ios.autoload.cisco_ios_autoload import CiscoIOSAutoload
+from cloudshell.networking.cisco.ios.autoload.cisco_ios_autoload import CiscoIOSAutoload
 
 
 class CiscoAutoloadOperations(object):

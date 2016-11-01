@@ -1,7 +1,7 @@
 from threading import Thread
 
 from cloudshell.networking.apply_connectivity.apply_connectivity_operation import apply_connectivity_changes
-from package.cloudshell.networking.cisco.ios.autoload.cisco_autoload_operations import CiscoAutoloadOperations
+from cloudshell.networking.cisco.ios.autoload.cisco_autoload_operations import CiscoAutoloadOperations
 from cloudshell.networking.cisco.cisco_firmware_operations import CiscoFirmwareOperations
 from cloudshell.shell.core.context_utils import get_attribute_by_name
 from cloudshell.networking.driver_helper import get_logger_with_thread_id, get_api, get_cli
@@ -263,9 +263,9 @@ if __name__ == '__main__':
     context.resource.attributes['Enable Password'] = 'NuCpFxP8cJMCic8ePJokug=='
     context.resource.attributes['Enable SNMP'] = 'True'
     context.resource.attributes['Disable SNMP'] = 'True'
-    context.resource.attributes['CLI Connection Type'] = 'SSH'
+    context.resource.attributes['CLI Connection Type'] = 'Telnet'
     context.resource.attributes['Sessions Concurrency Limit'] = '1'
-    context.resource.attributes['CLI TCP Port'] = '22'
+    context.resource.attributes['CLI TCP Port'] = '23'
     context.resource.address = '192.168.42.235'
     context.resource.name = '2950'
 
@@ -323,8 +323,8 @@ if __name__ == '__main__':
 }"""
 
     tt.initialize(context)
-    # Thread(target=tt.health_check, args=(context, )).start()
+    Thread(target=tt.health_check, args=(context, )).start()
     Thread(target=tt.ApplyConnectivityChanges, args=(context, request)).start()
-    # Thread(target=tt.get_inventory, args=(context, )).start()
-    # Thread(target=tt.save, args=(context, ' ', ' ', ' ')).start()
-    # Thread(target=tt.send_custom_command, args=(context, 'show run')).start()
+    Thread(target=tt.get_inventory, args=(context, )).start()
+    Thread(target=tt.save, args=(context, 'ftp://ftpuser:ftppass@192.168.65.39', '', '')).start()
+    Thread(target=tt.send_custom_command, args=(context, 'show run')).start()

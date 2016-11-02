@@ -136,7 +136,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
-        :param saved_artifact_info: SavedArtifactInfo json
+        :param saved_artifact_info: OrchestrationSavedArtifactInfo json
         :param custom_params: json with custom restore parameters
         """
 

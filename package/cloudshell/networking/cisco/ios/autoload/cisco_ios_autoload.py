@@ -4,8 +4,8 @@ from cloudshell.networking.cisco.ios.autoload.autoload_structure import GenericP
 
 
 class CiscoIOSAutoload(CiscoGenericSNMPAutoload):
-    def __init__(self, snmp_handler, logger, supported_os):
-        super(CiscoIOSAutoload, self).__init__(snmp_handler, logger, supported_os)
+    def __init__(self, snmp_handler, logger, supported_os, resource_name):
+        super(CiscoIOSAutoload, self).__init__(snmp_handler, logger, supported_os, resource_name)
         self.port = GenericPort
         self.power_port = GenericPowerPort
         self.port_channel = GenericPortChannel

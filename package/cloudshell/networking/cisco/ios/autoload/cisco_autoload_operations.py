@@ -11,7 +11,12 @@ from cloudshell.networking.cisco.ios.autoload.cisco_ios_autoload import CiscoIOS
 class CiscoAutoloadOperations(object):
     def __init__(self, cli, logger, supported_os, context):
         """
+        Facilitate SNMP autoload,
 
+        :param cli:
+        :param logger:
+        :param supported_os:
+        :param context:
         :param Cli cli:
         :param QualiSnmp snmp_handler:
         """
@@ -20,11 +25,17 @@ class CiscoAutoloadOperations(object):
         self.logger = logger
         self.supported_os = supported_os
         self.context = context
+        self.resource_name = get_resource_name(context)
 
     def discover(self):
+        """Enable and Disable SNMP communityon the device, Read it's structure and attributes: chassis, modules,
+        submodules, ports, port-channels and power supplies
+
+        :return: AutoLoadDetails object
+        """
         with CiscoSNMPContextManager(logger=self.logger, cli=self.cli, context=self.context) as snmp_handler:
             cisco_autoload = CiscoIOSAutoload(snmp_handler=snmp_handler, logger=self.logger,
-                                                      supported_os=self.supported_os)
+                                              supported_os=self.supported_os, resource_name=self.resource_name)
             return cisco_autoload.discover()
 
 
@@ -32,6 +43,13 @@ class CiscoSNMPContextManager(SNMPHandlerCreator):
     DEFAULT_COMMUNITY_NAME = 'quali'
 
     def __init__(self, cli, logger, context):
+        """
+        SNMP Context Manager, handle enabling/disabling SNMP
+
+        :param cli:
+        :param logger:
+        :param context:
+        """
         super(CiscoSNMPContextManager, self).__init__(logger=logger, context=context)
         self._cli = cli
         api = get_api(context)
@@ -47,7 +65,12 @@ class CiscoSNMPContextManager(SNMPHandlerCreator):
                                   self._snmp_parameters.snmp_community)
 
     def enable_snmp(self):
-        if not self._enable_snmp and not isinstance(self._snmp_parameters, SNMPV2Parameters):
+        """
+        Enable SNMP on the device
+
+        :return:
+        """
+        if not self._enable_snmp or not isinstance(self._snmp_parameters, SNMPV2Parameters):
             self._logger.info('Enable SNMP skipped: Enable SNMP attribute set to False or SNMP Version = v3')
             return
 
@@ -62,7 +85,12 @@ class CiscoSNMPContextManager(SNMPHandlerCreator):
                         self._snmp_parameters.snmp_community))
 
     def disable_snmp(self):
-        if not self._disable_snmp and not isinstance(self._snmp_parameters, SNMPV2Parameters):
+        """
+        Disable SNMP on the device
+
+        :return:
+        """
+        if not self._disable_snmp or not isinstance(self._snmp_parameters, SNMPV2Parameters):
             self._logger.info('Disable SNMP skipped: Disable SNMP attribute set to False and/or SNMP Version = v3')
             return
 

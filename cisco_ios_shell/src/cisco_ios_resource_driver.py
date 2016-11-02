@@ -98,7 +98,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
         configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
         logger.info('Save started')
-        response = configuration_operations.save(folder_path, configuration_type, vrf_management_name)
+        response = configuration_operations.save_configuration(folder_path, configuration_type, vrf_management_name)
         logger.info('Save completed')
         return response
 

@@ -16,7 +16,7 @@ from cloudshell.shell.core.driver_utils import GlobalLock
 
 
 class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverInterface, GlobalLock):
-    SUPPORTED_OS = ["CAT[ -]?OS", "IOS[ -]?X?[ER]?"]
+    SUPPORTED_OS = ["CAT[ -]?OS", "IOS[ -]?X?[E]?"]
 
     def __init__(self):
         super(CiscoIOSResourceDriver, self).__init__()
@@ -35,7 +35,13 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         pass
 
     def ApplyConnectivityChanges(self, context, request):
+        """
+        Create vlan and add or remove it to/from network interface
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
+        :param str request: request json
+        :return:
+        """
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
         connectivity_operations = CiscoConnectivityOperations(cli=self._cli, context=context, api=api, logger=logger,
@@ -53,6 +59,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def restore(self, context, path, configuration_type, restore_method, vrf_management_name=None):
         """Restore selected file to the provided destination
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
         :param path: source config file
         :param configuration_type: running or startup configs
         :param restore_method: append or override methods
@@ -82,9 +89,11 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def save(self, context, folder_path, configuration_type, vrf_management_name=None):
         """Save selected file to the provided destination
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
         :param configuration_type: source file, which will be saved
         :param folder_path: destination path where file will be saved
         :param vrf_management_name: VRF management Name
+        :return str saved configuration file name:
         """
 
         if not configuration_type:
@@ -103,6 +112,13 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         return response
 
     def orchestration_save(self, context, mode="shallow", custom_params=None):
+        """
+
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
+        :param mode: mode
+        :param custom_params: json with custom save parameters
+        :return str response: response json
+        """
 
         if not mode:
             mode = 'shallow'
@@ -117,6 +133,13 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         return response
 
     def orchestration_restore(self, context, saved_artifact_info, custom_params=None):
+        """
+
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
+        :param saved_artifact_info: SavedArtifactInfo json
+        :param custom_params: json with custom restore parameters
+        """
+
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
@@ -130,8 +153,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def get_inventory(self, context):
         """Return device structure with all standard attributes
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
         :return: response
-        :rtype: string
+        :rtype: str
         """
 
         logger = get_logger_with_thread_id(context)
@@ -146,10 +170,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def load_firmware(self, context, path, vrf_management_name=None):
         """Upload and updates firmware on the resource
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
         :param path: full path to firmware file, i.e. tftp://10.10.10.1/firmware.tar
         :param vrf_management_name: VRF management Name
-        :return: result
-        :rtype: string
         """
 
         logger = get_logger_with_thread_id(context)
@@ -165,8 +188,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def run_custom_command(self, context, custom_command):
         """Send custom command
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
         :return: result
-        :rtype: string
+        :rtype: str
         """
 
         logger = get_logger_with_thread_id(context)
@@ -178,6 +202,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def health_check(self, context):
         """Performs device health check
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
+        :return: Success or Error message
+        :rtype: str
         """
 
         logger = get_logger_with_thread_id(context)
@@ -188,8 +215,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def run_custom_config_command(self, context, custom_command):
         """Send custom command in configuration mode
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
         :return: result
-        :rtype: string
+        :rtype: str
         """
 
         logger = get_logger_with_thread_id(context)
@@ -205,7 +233,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :param remote_host: path to firmware file location on ftp or tftp server
         :param file_path: firmware file name
         :return: result
-        :rtype: string
+        :rtype: str
         """
 
         logger = get_logger_with_thread_id(context)
@@ -220,8 +248,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def send_custom_command(self, context, custom_command):
         """Send custom command in configuration mode
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
         :return: result
-        :rtype: string
+        :rtype: str
         """
 
         logger = get_logger_with_thread_id(context)
@@ -233,8 +262,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
     def send_custom_config_command(self, context, custom_command):
         """Send custom command in configuration mode
 
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
         :return: result
-        :rtype: string
+        :rtype: str
         """
 
         logger = get_logger_with_thread_id(context)

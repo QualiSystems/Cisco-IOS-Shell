@@ -174,7 +174,9 @@ class GenericPort(BaseResource):
     ADJACENT = 'adjacent'
     AUTO_NEGOTIATION = 'auto_negotiation'
 
-    def __init__(self, name, relative_address, resource_model='Generic Port', unique_id=None, mac_address='', l2_protocol_type='', ipv4_address='', ipv6_address='', port_description='', bandwidth='0', mtu='0', duplex='Half', adjacent='', auto_negotiation='False'):
+    def __init__(self, name, relative_address, resource_model='Generic Port', unique_id=None, mac_address='',
+                 l2_protocol_type='', ipv4_address='', ipv6_address='', port_description='', bandwidth='0', mtu='0',
+                 duplex='Half', adjacent='', auto_negotiation='False'):
         """
         Represent Generic Port resource entity
 
@@ -191,7 +193,8 @@ class GenericPort(BaseResource):
         :return Generic Port
         """
 
-        BaseResource.__init__(self, resource_model=resource_model, name=name, relative_address=relative_address, unique_id=unique_id)
+        BaseResource.__init__(self, resource_model=resource_model, name=name, relative_address=relative_address,
+                              unique_id=unique_id)
         self.attributes = {
             'MAC Address': mac_address,
             'L2 Protocol Type': l2_protocol_type,

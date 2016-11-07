@@ -1,0 +1,8 @@
+shell:
+    name: CiscoIOSShell
+    author: Anonymous
+    email: info@quali.com
+    description: Describe the purpose of your CloudShell shell
+    version: 0.1.0
+    driver_name: CiscoiosshellDriver
+    networking_standard_version: 4.0.1

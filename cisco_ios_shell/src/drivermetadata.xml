@@ -1,0 +1,74 @@
+<Driver Description="Describe the purpose of your CloudShell shell" MainClass="driver.CiscoiosshellDriver" Name="CiscoiosshellDriver" Version="1.0.0">
+    <Layout>
+        <Category Name="Hidden Commands">
+            <Command Name="shutdown" DisplayName="Shutdown" Tags="" Description="Sends a graceful shutdown to the device"/>
+            <Command Name="run_custom_config_command" DisplayName="Send Custom Config Command" Tags="">
+                <Parameters>
+                    <Parameter Name="custom_command" Type="String" Mandatory = "True" DisplayName="Command" DefaultValue=""
+                               Description="The command to run. Note that commands that require a response are not supported."/>
+                </Parameters>
+            </Command>
+            <Command Name="ApplyConnectivityChanges" DisplayName="ApplyConnectivityChanges" Tags="allow_unreserved">
+                <Parameters>
+                    <Parameter Name="request" Type="String" Mandatory = "True" DefaultValue="" Description=""/>
+                </Parameters>
+            </Command>
+            <Command Name="orchestration_save" >
+                <Parameters>
+                    <Parameter Name="mode" Type="Lookup" Mandatory = "True" AllowedValues="shallow,deep"  DefaultValue="shallow"
+                               Description="Snapshot save mode, can be one of two values 'shallow' (default) or 'deep'"/>
+                    <Parameter Name="custom_params" Type="String" Mandatory = "False"  DefaultValue=""
+                               Description=" Set of custom parameters for the save operation"/>
+
+                </Parameters>
+            </Command>
+            <Command Name="orchestration_restore" >
+                <Parameters>
+                    <Parameter Name="saved_details" Type="String" Mandatory = "True" DefaultValue=""
+                               Description="A JSON string representing the state to restore including saved artifacts and info"/>
+                    <Parameter Name="custom_params" Type="String" Mandatory = "False"  DefaultValue=""
+                               Description=" Set of custom parameters for the restore operation"/>
+
+                </Parameters>
+            </Command>
+            <Command Name="health_check"  Tags="" Description="Checks if the device is up and connectable"/>
+
+        </Category>
+        <Command Name="run_custom_command" DisplayName="Send Custom Command" Tags="" Description="Executes a custom command on the device">
+            <Parameters>
+                <Parameter Name="custom_command" Type="String" Mandatory = "True" DisplayName="Command" DefaultValue=""
+                           Description="The command to run. Note that commands that require a response are not supported."/>
+            </Parameters>
+        </Command>
+        <Command Name="save" DisplayName="Save" Tags="" Description="Creates a configuration file and saves it to the provided destination">
+            <Parameters>
+                <Parameter Name="configuration_type" Type="Lookup" AllowedValues="Startup,Running" Mandatory = "False"  DefaultValue=""
+                           DisplayName="Configuration Type" Description="Specify whether the file should update the startup or running config. 'Startup' configuration is not supported on all switches."/>
+                <Parameter Name="folder_path" Type="String" Mandatory = "False" DisplayName="Folder Path" DefaultValue=""
+                           Description="The path in which the configuration file will be saved. The path should include the protocol type (for example tftp://asdf)"/>
+                  <Parameter Name="vrf_management_name" Type="String" Mandatory = "False" DisplayName="VRF Management Name" DefaultValue=""
+                           Description="Optional. Virtual routing and Forwarding management name"/>
+            </Parameters>
+        </Command>
+        <Command Name="restore" DisplayName="Restore" Tags="" Description="Restores a configuration file">
+            <Parameters>
+                <Parameter Name="path" Type="String" Mandatory = "True" DefaultValue="" DisplayName="Path"
+                           Description="The path to the configuration file, including the configuration file name. The path should include the protocol type (for example tftp://asdf)."/>
+                <Parameter Name="configuration_type" Type="Lookup" AllowedValues="Startup,Running" Mandatory = "False"  DefaultValue=""
+                           DisplayName="Configuration Type" Description="Specify whether the file should update the startup or running config. 'Startup' configuration is not supported on all switches."/>
+                <Parameter Name="restore_method" Type="Lookup" AllowedValues="Override,Append"  Mandatory = "False" DefaultValue=""
+                           DisplayName="Restore Method" Description="Determines whether the restore should append or override the current configuration."/>
+                <Parameter Name="vrf_management_name" Type="String" Mandatory = "False" DisplayName="VRF Management Name" DefaultValue=""
+                           Description="Optional. Virtual routing and Forwarding management name"/>
+            </Parameters>
+        </Command>
+        <Command Name="load_firmware" DisplayName="Load Firmware" Tags="" Description="Upload and updates firmware on the resource">
+            <Parameters>
+                <Parameter Name="path" Type="String" Mandatory = "True" DisplayName="Path" DefaultValue=""
+                           Description="Path to tftp:// server where firmware file is stored."/>
+                <Parameter Name="vrf_management_name" Type="String" Mandatory = "False" DisplayName="VRF Management Name" DefaultValue=""
+                           Description="Optional. Virtual routing and Forwarding management name"/>
+            </Parameters>
+        </Command>
+    </Layout>
+</Driver>

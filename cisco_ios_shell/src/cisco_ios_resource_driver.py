@@ -1,11 +1,10 @@
-from threading import Thread
-
 from cloudshell.networking.apply_connectivity.apply_connectivity_operation import apply_connectivity_changes
 from cloudshell.networking.cisco.ios.autoload.cisco_autoload_operations import CiscoAutoloadOperations
 from cloudshell.networking.cisco.cisco_firmware_operations import CiscoFirmwareOperations
-from cloudshell.shell.core.context_utils import get_attribute_by_name, put_context
+from cloudshell.networking.operations.connectivity_operations import serialize_connectivity_result
+from cloudshell.shell.core.context_utils import get_attribute_by_name
 from cloudshell.networking.driver_helper import get_logger_with_thread_id, get_api, get_cli
-from cloudshell.shell.core.context import ResourceContextDetails, ResourceCommandContext, ReservationContextDetails
+from cloudshell.shell.core.context import ResourceCommandContext
 from cloudshell.networking.cisco.cisco_configuration_operations import CiscoConfigurationOperations
 from cloudshell.networking.cisco.cisco_connectivity_operations import CiscoConnectivityOperations
 from cloudshell.networking.cisco.cisco_run_command_operations import CiscoRunCommandOperations
@@ -48,12 +47,14 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         connectivity_operations = CiscoConnectivityOperations(cli=self._cli, context=context, api=api, logger=logger,
                                                               supported_os=self.SUPPORTED_OS)
         connectivity_operations.logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
-        response = apply_connectivity_changes(request=request, logger=logger,
-                                              add_vlan_action=connectivity_operations.add_vlan_action,
-                                              remove_vlan_action=connectivity_operations.remove_vlan_action)
+        result = apply_connectivity_changes(request=request, logger=logger,
+                                            add_vlan_action=connectivity_operations.add_vlan_action,
+                                            remove_vlan_action=connectivity_operations.remove_vlan_action)
+        response = serialize_connectivity_result(result)
         connectivity_operations.logger.info('Finished applying connectivity changes, response is: {0}'.format(str(
             response)))
         connectivity_operations.logger.info('Apply Connectivity changes completed')
+
         return response
 
     @GlobalLock.lock

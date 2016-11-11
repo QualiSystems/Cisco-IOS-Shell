@@ -293,7 +293,8 @@ class GenericSubModule(BaseResource):
     VERSION = 'version'
     MODEL = 'model'
 
-    def __init__(self, name, relative_address, resource_model='Generic Sub Module', unique_id=None, serial_number='', version='', model=''):
+    def __init__(self, name, relative_address, resource_model='Generic Sub Module', unique_id=None, serial_number='',
+                 version='', model=''):
         """
         Represent Generic Sub Module resource entity
 
@@ -303,7 +304,8 @@ class GenericSubModule(BaseResource):
         :return Generic Sub Module
         """
 
-        BaseResource.__init__(self, resource_model=resource_model, name=name, relative_address=relative_address, unique_id=unique_id)
+        BaseResource.__init__(self, resource_model=resource_model, name=name, relative_address=relative_address,
+                              unique_id=unique_id)
         self.attributes = {
             'Serial Number': serial_number,
             'Version': version,
@@ -340,7 +342,8 @@ class GenericPowerPort(BaseResource):
     VERSION = 'version'
     PORT_DESCRIPTION = 'port_description'
 
-    def __init__(self, name, relative_address, resource_model='Generic Power Port', unique_id=None, model='', serial_number='', version='', port_description=''):
+    def __init__(self, name, relative_address, resource_model='Generic Power Port', unique_id=None, model='',
+                 serial_number='', version='', port_description=''):
         """
         Represent Generic Power Port resource entity
 
@@ -351,7 +354,8 @@ class GenericPowerPort(BaseResource):
         :return Generic Power Port
         """
 
-        BaseResource.__init__(self, resource_model=resource_model, name=name, relative_address=relative_address, unique_id=unique_id)
+        BaseResource.__init__(self, resource_model=resource_model, name=name, relative_address=relative_address,
+                              unique_id=unique_id)
         self.attributes = {
             'Model': model,
             'Serial Number': serial_number,
@@ -397,7 +401,8 @@ class GenericPortChannel(BaseResource):
     IPV6_ADDRESS = 'ipv6_address'
     PORT_DESCRIPTION = 'port_description'
 
-    def __init__(self, name, relative_address, resource_model='Generic Port Channel', unique_id=None, associated_ports='', ipv4_address='', ipv6_address='', port_description=''):
+    def __init__(self, name, relative_address, resource_model='Generic Port Channel', unique_id=None,
+                 associated_ports='', ipv4_address='', ipv6_address='', port_description=''):
         """
         Represent Generic Port Channel resource entity
 
@@ -408,7 +413,8 @@ class GenericPortChannel(BaseResource):
         :return Generic Port Channel
         """
 
-        BaseResource.__init__(self, resource_model=resource_model, name=name, relative_address=relative_address, unique_id=unique_id)
+        BaseResource.__init__(self, resource_model=resource_model, name=name, relative_address=relative_address,
+                              unique_id=unique_id)
         self.attributes = {
             'Associated Ports': associated_ports,
             'IPv4 Address': ipv4_address,

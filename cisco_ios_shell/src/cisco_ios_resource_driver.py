@@ -46,14 +46,14 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         api = get_api(context)
         connectivity_operations = CiscoConnectivityOperations(cli=self._cli, context=context, api=api, logger=logger,
                                                               supported_os=self.SUPPORTED_OS)
-        connectivity_operations.logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
+        logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
         result = apply_connectivity_changes(request=request, logger=logger,
                                             add_vlan_action=connectivity_operations.add_vlan_action,
                                             remove_vlan_action=connectivity_operations.remove_vlan_action)
         response = serialize_connectivity_result(result)
-        connectivity_operations.logger.info('Finished applying connectivity changes, response is: {0}'.format(str(
+        logger.info('Finished applying connectivity changes, response is: {0}'.format(str(
             response)))
-        connectivity_operations.logger.info('Apply Connectivity changes completed')
+        logger.info('Apply Connectivity changes completed')
 
         return response
 
@@ -163,9 +163,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         logger = get_logger_with_thread_id(context)
         autoload_operations = CiscoAutoloadOperations(cli=self._cli, logger=logger, context=context,
                                                       supported_os=self.SUPPORTED_OS)
-        autoload_operations.logger.info('Autoload started')
+        logger.info('Autoload started')
         response = autoload_operations.discover()
-        autoload_operations.logger.info('Autoload completed')
+        logger.info('Autoload completed')
         return response
 
     @GlobalLock.lock

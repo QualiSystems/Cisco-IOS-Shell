@@ -42,6 +42,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         :param str request: request json
         :return:
         """
+
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
         connectivity_operations = CiscoConnectivityOperations(cli=self._cli, context=context, api=api, logger=logger,

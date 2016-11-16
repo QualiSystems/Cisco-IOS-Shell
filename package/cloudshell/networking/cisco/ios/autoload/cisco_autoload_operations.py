@@ -60,9 +60,7 @@ class CiscoSNMPContextManager(SNMPHandlerCreator):
         self._enable_snmp = get_attribute_by_name(context=context, attribute_name='Enable SNMP').lower() == 'true'
         self._disable_snmp = get_attribute_by_name(context=context, attribute_name='Disable SNMP').lower() == 'true'
         if not self._snmp_parameters.snmp_community:
-            self._snmp_parameters.snmp_community = CiscoSNMPContextManager.DEFAULT_COMMUNITY_NAME
-            api.SetAttributeValue(self._resource_name, 'SNMP Read Community',
-                                  self._snmp_parameters.snmp_community)
+            raise Exception(self.__class__.__name__, 'SNMP Read Community is empty')
 
     def enable_snmp(self):
         """

@@ -1,14 +1,14 @@
-from cloudshell.networking.apply_connectivity.apply_connectivity_operation import apply_connectivity_changes
-from cloudshell.networking.cisco.ios.autoload.cisco_autoload_operations import CiscoAutoloadOperations
-from cloudshell.networking.cisco.cisco_firmware_operations import CiscoFirmwareOperations
-from cloudshell.networking.operations.connectivity_operations import serialize_connectivity_result
+from cloudshell.networking.cisco.ios.autoload.cisco_autoload_runner import CiscoIOSAutoloadRunner as AutoloadRunner
+from cloudshell.networking.cisco.runners.cisco_configuration_runner import \
+    CiscoConfigurationRunner as ConfigurationRunner
+from cloudshell.networking.cisco.runners.cisco_connectivity_runner import \
+    CiscoConnectivityRunner as ConnectivityRunner
+from cloudshell.networking.cisco.runners.cisco_firmware_runner import CiscoFirmwareRunner as FirmwareRunner
+from cloudshell.networking.cisco.runners.cisco_run_command_runner import CiscoRunCommandRunner as CommandRunner
+from cloudshell.networking.cisco.runners.cisco_state_runner import CiscoStateRunner as StateRunner
 from cloudshell.shell.core.context_utils import get_attribute_by_name
-from cloudshell.networking.driver_helper import get_logger_with_thread_id, get_api, get_cli
+from cloudshell.networking.devices.driver_helper import get_logger_with_thread_id, get_api, get_cli
 from cloudshell.shell.core.context import ResourceCommandContext
-from cloudshell.networking.cisco.cisco_configuration_operations import CiscoConfigurationOperations
-from cloudshell.networking.cisco.cisco_connectivity_operations import CiscoConnectivityOperations
-from cloudshell.networking.cisco.cisco_run_command_operations import CiscoRunCommandOperations
-from cloudshell.networking.cisco.cisco_state_operations import CiscoStateOperations
 from cloudshell.networking.networking_resource_driver_interface import NetworkingResourceDriverInterface
 from cloudshell.shell.core.resource_driver_interface import ResourceDriverInterface
 from cloudshell.shell.core.driver_utils import GlobalLock
@@ -45,21 +45,17 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
-        connectivity_operations = CiscoConnectivityOperations(cli=self._cli, context=context, api=api, logger=logger,
-                                                              supported_os=self.SUPPORTED_OS)
+        connectivity_operations = ConnectivityRunner(cli=self._cli, context=context, api=api, logger=logger)
         logger.info('Start applying connectivity changes, request is: {0}'.format(str(request)))
-        result = apply_connectivity_changes(request=request, logger=logger,
-                                            add_vlan_action=connectivity_operations.add_vlan_action,
-                                            remove_vlan_action=connectivity_operations.remove_vlan_action)
-        response = serialize_connectivity_result(result)
+        result = connectivity_operations.apply_connectivity_changes(request=request)
         logger.info('Finished applying connectivity changes, response is: {0}'.format(str(
-            response)))
+            result)))
         logger.info('Apply Connectivity changes completed')
 
-        return response
+        return result
 
     @GlobalLock.lock
-    def restore(self, context, path, configuration_type, restore_method, vrf_management_name=None):
+    def restore(self, context, path, configuration_type='running', restore_method='override', vrf_management_name=None):
         """Restore selected file to the provided destination
 
         :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
@@ -81,15 +77,14 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
-        configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
+        configuration_operations = ConfigurationRunner(logger=logger, api=api, cli=self._cli, context=context)
         logger.info('Restore started')
-        response = configuration_operations.restore(path=path, restore_method=restore_method,
-                                                    configuration_type=configuration_type,
-                                                    vrf_management_name=vrf_management_name)
+        configuration_operations.restore(path=path, restore_method=restore_method,
+                                         configuration_type=configuration_type,
+                                         vrf_management_name=vrf_management_name)
         logger.info('Restore completed')
-        logger.info(response)
 
-    def save(self, context, folder_path, configuration_type, vrf_management_name=None):
+    def save(self, context, folder_path='', configuration_type='running', vrf_management_name=None):
         """Save selected file to the provided destination
 
         :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
@@ -108,9 +103,10 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
-        configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
+        configuration_operations = ConfigurationRunner(logger=logger, cli=self._cli, context=context, api=api)
         logger.info('Save started')
-        response = configuration_operations.save_configuration(folder_path, configuration_type, vrf_management_name)
+        response = configuration_operations.save(folder_path=folder_path, configuration_type=configuration_type,
+                                                 vrf_management_name=vrf_management_name)
         logger.info('Save completed')
         return response
 
@@ -129,7 +125,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
-        configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
+        configuration_operations = ConfigurationRunner(logger=logger, api=api, cli=self._cli, context=context)
         logger.info('Orchestration save started')
         response = configuration_operations.orchestration_save(mode=mode, custom_params=custom_params)
         logger.info('Orchestration save completed')
@@ -146,7 +142,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
 
-        configuration_operations = CiscoConfigurationOperations(logger=logger, api=api, cli=self._cli, context=context)
+        configuration_operations = ConfigurationRunner(logger=logger, api=api, cli=self._cli, context=context)
         logger.info('Orchestration restore started')
         configuration_operations.orchestration_restore(saved_artifact_info=saved_artifact_info,
                                                        custom_params=custom_params)
@@ -162,8 +158,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         """
 
         logger = get_logger_with_thread_id(context)
-        autoload_operations = CiscoAutoloadOperations(cli=self._cli, logger=logger, context=context,
-                                                      supported_os=self.SUPPORTED_OS)
+        api = get_api(context)
+        autoload_operations = AutoloadRunner(cli=self._cli, logger=logger, context=context, api=api,
+                                             supported_os=self.SUPPORTED_OS)
         logger.info('Autoload started')
         response = autoload_operations.discover()
         logger.info('Autoload completed')
@@ -184,7 +181,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
             vrf_management_name = get_attribute_by_name(context=context, attribute_name='VRF Management Name')
 
         logger.info('Start Load Firmware')
-        firmware_operations = CiscoFirmwareOperations(cli=self._cli, logger=logger, context=context, api=api)
+        firmware_operations = FirmwareRunner(cli=self._cli, logger=logger, context=context, api=api)
         response = firmware_operations.load_firmware(path=path, vrf_management_name=vrf_management_name)
         logger.info('Finish Load Firmware: {}'.format(response))
 
@@ -198,7 +195,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
-        send_command_operations = CiscoRunCommandOperations(cli=self._cli, logger=logger, context=context, api=api)
+        send_command_operations = CommandRunner(cli=self._cli, logger=logger, context=context, api=api)
         response = send_command_operations.run_custom_command(custom_command=custom_command)
         return response
 
@@ -212,7 +209,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
-        state_operations = CiscoStateOperations(cli=self._cli, logger=logger, api=api, context=context)
+        state_operations = StateRunner(cli=self._cli, logger=logger, api=api, context=context)
         return state_operations.health_check()
 
     def run_custom_config_command(self, context, custom_command):
@@ -225,7 +222,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
-        send_command_operations = CiscoRunCommandOperations(cli=self._cli, logger=logger, context=context, api=api)
+        send_command_operations = CommandRunner(cli=self._cli, logger=logger, context=context, api=api)
         result_str = send_command_operations.run_custom_config_command(custom_command=custom_command)
         return result_str
 
@@ -244,7 +241,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         vrf_management_name = get_attribute_by_name(context=context, attribute_name='VRF Management Name')
 
         logger.info('Start Update Firmware')
-        firmware_operations = CiscoFirmwareOperations(cli=self._cli, logger=logger, context=context, api=api)
+        firmware_operations = FirmwareRunner(cli=self._cli, logger=logger, context=context, api=api)
         response = firmware_operations.load_firmware(path=remote_host, vrf_management_name=vrf_management_name)
         logger.info('Finish Update Firmware: {}'.format(response))
 
@@ -258,7 +255,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
-        send_command_operations = CiscoRunCommandOperations(cli=self._cli, logger=logger, context=context, api=api)
+        send_command_operations = CommandRunner(cli=self._cli, logger=logger, context=context, api=api)
         response = send_command_operations.run_custom_command(custom_command=custom_command)
         return response
 
@@ -272,7 +269,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
 
         logger = get_logger_with_thread_id(context)
         api = get_api(context)
-        send_command_operations = CiscoRunCommandOperations(cli=self._cli, logger=logger, context=context, api=api)
+        send_command_operations = CommandRunner(cli=self._cli, logger=logger, context=context, api=api)
         result_str = send_command_operations.run_custom_config_command(custom_command=custom_command)
         return result_str
 

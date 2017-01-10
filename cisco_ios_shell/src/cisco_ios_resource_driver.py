@@ -126,9 +126,9 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         api = get_api(context)
 
         configuration_operations = ConfigurationRunner(logger=logger, api=api, cli=self._cli, context=context)
-        logger.info('Orchestration save started')
+        logger.info('Orchestration save started, request is: {}'.format(custom_params))
         response = configuration_operations.orchestration_save(mode=mode, custom_params=custom_params)
-        logger.info('Orchestration save completed')
+        logger.info('Orchestration save completed, response is: {}'.format(response))
         return response
 
     def orchestration_restore(self, context, saved_artifact_info, custom_params):
@@ -143,7 +143,7 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         api = get_api(context)
 
         configuration_operations = ConfigurationRunner(logger=logger, api=api, cli=self._cli, context=context)
-        logger.info('Orchestration restore started')
+        logger.info('Orchestration restore started, request is: {}'.format(saved_artifact_info))
         configuration_operations.orchestration_restore(saved_artifact_info=saved_artifact_info,
                                                        custom_params=custom_params)
         logger.info('Orchestration restore completed')

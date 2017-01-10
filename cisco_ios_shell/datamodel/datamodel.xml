@@ -1,216 +1,169 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <DataModelInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                xmlns="http://schemas.qualisystems.com/ResourceManagement/DataModelSchema.xsd">
     <Attributes>
         <AttributeInfo Name="User" Description="" Type="String" DefaultValue="" IsReadOnly="false">
-            <Rules>
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Password" Description="" Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw=="
+        <AttributeInfo Name="Password" Description="" Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw==" IsReadOnly="false">
+            <Rules Override="false">
+                <Rule Name="Configuration"/>
+            </Rules>
+        </AttributeInfo>
+        <AttributeInfo Name="Enable Password" Description="The enable password is required by some CLI protocols such as Telnet and is required according to the device configuration." Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw=="
                        IsReadOnly="false">
-            <Rules>
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Enable Password"
-                       Description="The enable password is required by some CLI protocols such as Telnet and is required according to the device configuration."
-                       Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw=="
-                       IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Power Management" Description="Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status. Enabled by default." Type="Boolean" DefaultValue="True" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Power Management"
-                       Description="Used by the power management orchestration, if enabled, to determine whether to automatically manage the device power status. Enabled by default."
-                       Type="Boolean" DefaultValue="True" IsReadOnly="false">
-            <Rules>
-                <Rule Name="Configuration"/>
-            </Rules>
-        </AttributeInfo>
-        <AttributeInfo Name="System Name"
-                       Description="A unique identifier for the device, if exists in the device terminal/os."
-                       Type="String" DefaultValue="" IsReadOnly="true">
+        <AttributeInfo Name="System Name" Description="A unique identifier for the device, if exists in the device terminal/os." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Contact Name" Description="The name of a contact registered in the device." Type="String"
-                       DefaultValue="" IsReadOnly="true">
+        <AttributeInfo Name="Contact Name" Description="The name of a contact registered in the device." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="OS Version" Description="Version of the Operating System." Type="String" DefaultValue=""
-                       IsReadOnly="true">
+        <AttributeInfo Name="OS Version" Description="Version of the Operating System." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Version" Description="The firmware version of the resource." Type="String" DefaultValue=""
-                       IsReadOnly="true">
+        <AttributeInfo Name="Version" Description="The firmware version of the resource." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Vendor" Description="The name of the device manufacture." Type="String" DefaultValue=""
-                       IsReadOnly="true">
+        <AttributeInfo Name="Vendor" Description="The name of the device manufacture." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Location"
-                       Description="The device physical location identifier. For example Lab1/Floor2/Row5/Slot4."
-                       Type="String" DefaultValue="" IsReadOnly="true">
+        <AttributeInfo Name="Location" Description="The device physical location identifier. For example Lab1/Floor2/Row5/Slot4." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Backup Location"
-                       Description="The location in which configuration files will be saved in case no backup location input is passed to the Save command."
-                       Type="String" DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Backup Location" Description="The location in which configuration files will be saved in case no backup location input is passed to the Save command." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Backup Type"
-                       Description="Supported protocols for saving and restoring of configuration and firmware files. Possible values are &quot;File System&quot;, &quot;FTP&quot; and &quot;TFTP&quot;. Default value is &quot;File System&quot;."
-                       Type="String" DefaultValue="File System" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Backup Type" Description="Supported protocols for saving and restoring of configuration and firmware files. Possible values are &quot;File System&quot;, &quot;FTP&quot; and &quot;TFTP&quot;. Default value is &quot;File System&quot;." Type="String" DefaultValue="File System" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Backup User"
-                       Description="Username for the storage server used for saving and restoring of configuration and firmware files."
-                       Type="String" DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Backup User" Description="Username for the storage server used for saving and restoring of configuration and firmware files." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Backup Password"
-                       Description="Password for the storage server used for saving and restoring of configuration and firmware files."
-                       Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw==" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Backup Password" Description="Password for the storage server used for saving and restoring of configuration and firmware files." Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw==" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Model"
-                       Description="The device model. This information is typically used for abstract resource filtering."
-                       Type="String" DefaultValue="" IsReadOnly="true">
+        <AttributeInfo Name="Model" Description="The device model. This information is typically used for abstract resource filtering." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="SNMP Read Community"
-                       Description="The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device."
-                       Type="String" DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="SNMP Read Community" Description="The SNMP Read-Only Community String is like a password. It is sent along with each SNMP Get-Request and allows (or denies) access to device." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="SNMP Write Community"
-                       Description="The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values."
-                       Type="String" DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="SNMP Write Community" Description="The SNMP Write Community String is like a password. It is sent along with each SNMP Set-Request and allows (or denies) chaning MIBs values." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="SNMP V3 Password" Description="Relevant only in case SNMP V3 is in use." Type="String"
-                       DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="SNMP V3 Password" Description="Relevant only in case SNMP V3 is in use." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="SNMP V3 Private Key" Description="Relevant only in case SNMP V3 is in use." Type="String"
-                       DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="SNMP V3 Private Key" Description="Relevant only in case SNMP V3 is in use." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="SNMP V3 User" Description="Relevant only in case SNMP V3 is in use." Type="String"
-                       DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="SNMP V3 User" Description="Relevant only in case SNMP V3 is in use." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Enable SNMP"
-                       Description="If set to True and SNMP is not enabled yet in the device the Shell will automatically enable SNMP in the device when Autoload command is called. SNMP must be enabled on the device for the Autoload command to run successfully. True by default."
-                       Type="Boolean" DefaultValue="True" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Enable SNMP" Description="If set to True and SNMP isn’t enabled yet in the device the Shell will automatically enable SNMP in the device when Autoload command is called. SNMP must be enabled on the device for the Autoload command to run successfully. True by default." Type="Boolean" DefaultValue="True" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Disable SNMP"
-                       Description="If set to True SNMP will be disabled automatically by the Shell after the Autoload command execution is completed. False by default."
-                       Type="Boolean" DefaultValue="False" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Disable SNMP" Description="If set to True SNMP will be disabled automatically by the Shell after the Autoload command execution is completed. False by default." Type="Boolean" DefaultValue="False" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="SNMP Version" Description="The version of SNMP to use. Possible values are v1, v2c and v3."
-                       Type="String" DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="SNMP Version" Description="The version of SNMP to use. Possible values are v1, v2c and v3." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Sessions Concurrency Limit"
-                       Description="The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency)."
-                       Type="Numeric" DefaultValue="1" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Sessions Concurrency Limit" Description="The maximum number of concurrent sessions that the driver will open to the device. Default is 1 (no concurrency)." Type="Numeric" DefaultValue="1" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Console Server IP Address"
-                       Description="The IP address of the console server, in IPv4 format." Type="String" DefaultValue=""
-                       IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Console Server IP Address" Description="The IP address of the console server, in IPv4 format." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
         <AttributeInfo Name="Console User" Description="" Type="String" DefaultValue="" IsReadOnly="false">
-            <Rules>
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="VRF Management Name"
-                       Description="The default VRF Management to use if configured in the network and no such input was passed to the Save or Restore command."
-                       Type="String" DefaultValue="" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="VRF Management Name" Description="The default VRF Management to use if configured in the network and no such input was passed to the Save or Restore command." Type="String" DefaultValue="" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="CLI TCP Port"
-                       Description="TCP Port to user for CLI connection. If kept empty a default CLI port will be used based on the chosen protocol, for example Telnet will use port 23."
-                       Type="Numeric" DefaultValue="0" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="CLI TCP Port" Description="TCP Port to user for CLI connection. If kept empty a default CLI port will be used based on the chosen protocol, for example Telnet will use port 23." Type="Numeric" DefaultValue="0" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
         <AttributeInfo Name="Console Password" Description="" Type="Password" DefaultValue="3M3u7nkDzxWb0aJ/IZYeWw=="
                        IsReadOnly="false">
-            <Rules>
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Console Port"
-                       Description="The port on the console server, usually TCP port, which the device is associated with."
-                       Type="Numeric" DefaultValue="0" IsReadOnly="false">
-            <Rules>
+        <AttributeInfo Name="Console Port" Description="The port on the console server, usually TCP port, which the device is associated with." Type="Numeric" DefaultValue="0" IsReadOnly="false">
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo xsi:type="LookupAttributeDetails" Name="CLI Connection Type"
-                       Description="The CLI connection type that will be used by the driver. Possible values are Auto, Console, SSH, Telnet and TCP. If Auto is selected the driver will choose the available connection type automatically. Default value is Auto."
-                       Type="Lookup" DefaultValue="Auto"
+        <AttributeInfo xsi:type="LookupAttributeDetails" Name="CLI Connection Type" Description="The CLI connection type that will be used by the driver. Possible values are Auto, Console, SSH, Telnet and TCP. If Auto is selected the driver will choose the available connection type automatically. Default value is Auto." Type="Lookup" DefaultValue="Auto"
                        IsReadOnly="false" IsCommand="false">
-            <Rules>
+            <Rules Override="false">
                 <Rule Name="Configuration"/>
             </Rules>
             <LookupValues>
@@ -233,9 +186,7 @@
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="L2 Protocol Type"
-                       Description="The L2 protocol type configured on the interface. For example POS, Serial."
-                       Type="String" DefaultValue="" IsReadOnly="true">
+        <AttributeInfo Name="L2 Protocol Type" Description="The L2 protocol type configured on the interface. For example POS, Serial." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
@@ -253,30 +204,25 @@
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Port Description" Description="The description of the port as configured in the device."
-                       Type="String" DefaultValue="" IsReadOnly="true">
+        <AttributeInfo Name="Port Description" Description="The description of the port as configured in the device." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Bandwidth" Description="The current interface bandwidth, in MB." Type="Numeric"
-                       DefaultValue="0" IsReadOnly="true">
+        <AttributeInfo Name="Bandwidth" Description="The current interface bandwidth, in MB." Type="Numeric" DefaultValue="0" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="MTU" Description="The current MTU configured on the interface." Type="Numeric"
-                       DefaultValue="0" IsReadOnly="true">
+        <AttributeInfo Name="MTU" Description="The current MTU configured on the interface." Type="Numeric" DefaultValue="0" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo xsi:type="LookupAttributeDetails" Name="Duplex"
-                       Description="The current duplex configuration on the interface. Possible values are Half or Full."
-                       Type="Lookup" DefaultValue="Half"
+        <AttributeInfo xsi:type="LookupAttributeDetails" Name="Duplex" Description="The current duplex configuration on the interface. Possible values are Half or Full." Type="Lookup" DefaultValue="Half"
                        IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
@@ -287,25 +233,19 @@
                 <LookupValue NumericValue="3" StringValue="Full"/>
             </LookupValues>
         </AttributeInfo>
-        <AttributeInfo Name="Adjacent"
-                       Description="The adjacent device (system name) and port, based on LLDP or CDP protocol."
-                       Type="String" DefaultValue="" IsReadOnly="true">
+        <AttributeInfo Name="Adjacent" Description="The adjacent device (system name) and port, based on LLDP or CDP protocol." Type="String" DefaultValue="" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Auto Negotiation"
-                       Description="The current auto negotiation configuration on the interface." Type="Boolean"
-                       DefaultValue="False" IsReadOnly="true">
+        <AttributeInfo Name="Auto Negotiation" Description="The current auto negotiation configuration on the interface." Type="Boolean" DefaultValue="False" IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
                 <Rule Name="Available For Abstract Resources"/>
             </Rules>
         </AttributeInfo>
-        <AttributeInfo Name="Associated Ports"
-                       Description="Ports associated with this port channel. The value is in the format &quot;[portResourceName],...&quot;, for example &quot;GE0-0-0-1,GE0-0-0-2&quot;"
-                       Type="String" DefaultValue=""
+        <AttributeInfo Name="Associated Ports" Description="Ports associated with this port channel. The value is in the format &quot;[portResourceName],…&quot;, for example &quot;GE0-0-0-1,GE0-0-0-2&quot;" Type="String" DefaultValue=""
                        IsReadOnly="true">
             <Rules Override="false">
                 <Rule Name="Setting"/>
@@ -314,17 +254,286 @@
         </AttributeInfo>
     </Attributes>
     <ResourceFamilies>
-        <ResourceFamily Name="Switch" Description="" IsSearchable="true" IsPowerSwitch="true">
+        <ResourceFamily Name="Switch" Description="" IsSearchable="true" IsPowerSwitch="false">
             <AttachedAttributes/>
             <AttributeValues/>
             <Models>
+                <ResourceModel Name="Cisco IOS Switch" Description="" SupportsConcurrentCommands="true">
+                    <AttachedAttributes>
+                        <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Enable Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="System Name" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Contact Name" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="OS Version" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Vendor" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Location" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Backup Location" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Backup Type" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Backup User" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Backup Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="VRF Management Name" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Model" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP Read Community" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP V3 Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP V3 Private Key" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP V3 User" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP Version" IsOverridable="true" IsLocal="true">
+                            <AllowedValues>
+                                <AllowedValue>v1</AllowedValue>
+                                <AllowedValue>v2c</AllowedValue>
+                                <AllowedValue>v3</AllowedValue>
+                            </AllowedValues>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP Write Community" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Sessions Concurrency Limit" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Console Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Console Port" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="CLI TCP Port" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Console Server IP Address" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Console User" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="CLI Connection Type" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Power Management" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Enable SNMP" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Disable SNMP" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                    </AttachedAttributes>
+                    <AttributeValues>
+                        <AttributeValue Name="User" Value=""/>
+                        <AttributeValue Name="Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                        <AttributeValue Name="Enable Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                        <AttributeValue Name="System Name" Value=""/>
+                        <AttributeValue Name="Contact Name" Value=""/>
+                        <AttributeValue Name="OS Version" Value=""/>
+                        <AttributeValue Name="Vendor" Value=""/>
+                        <AttributeValue Name="Location" Value=""/>
+                        <AttributeValue Name="Backup Location" Value=""/>
+                        <AttributeValue Name="Backup User" Value=""/>
+                        <AttributeValue Name="Backup Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                        <AttributeValue Name="Backup Type" Value="File System"/>
+                        <AttributeValue Name="Model" Value=""/>
+                        <AttributeValue Name="SNMP Read Community" Value=""/>
+                        <AttributeValue Name="SNMP V3 Password" Value=""/>
+                        <AttributeValue Name="SNMP V3 Private Key" Value=""/>
+                        <AttributeValue Name="SNMP V3 User" Value=""/>
+                        <AttributeValue Name="SNMP Version" Value=""/>
+                        <AttributeValue Name="SNMP Write Community" Value=""/>
+                        <AttributeValue Name="VRF Management Name" Value=""/>
+                        <AttributeValue Name="Console Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                        <AttributeValue Name="Console Port" Value="0"/>
+                        <AttributeValue Name="CLI TCP Port" Value="0"/>
+                        <AttributeValue Name="Sessions Concurrency Limit" Value="1"/>
+                        <AttributeValue Name="Console Server IP Address" Value=""/>
+                        <AttributeValue Name="Console User" Value=""/>
+                        <AttributeValue Name="CLI Connection Type" Value="Auto"/>
+                        <AttributeValue Name="Power Management" Value="True"/>
+                        <AttributeValue Name="Enable SNMP" Value="True"/>
+                        <AttributeValue Name="Disable SNMP" Value="False"/>
+                    </AttributeValues>
+                    <ParentModels/>
+                    <Drivers>
+                        <DriverName>Generic Cisco IOS Driver Version3</DriverName>
+                    </Drivers>
+                    <Scripts/>
+                </ResourceModel>
             </Models>
             <Categories/>
         </ResourceFamily>
-        <ResourceFamily Name="Router" Description="" IsSearchable="true" IsPowerSwitch="true">
+        <ResourceFamily Name="Router" Description="" IsSearchable="true" IsPowerSwitch="false">
             <AttachedAttributes/>
             <AttributeValues/>
             <Models>
+                <ResourceModel Name="Cisco IOS Router" Description="" SupportsConcurrentCommands="true">
+                    <AttachedAttributes>
+                        <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Enable Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="System Name" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Contact Name" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="OS Version" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Vendor" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Location" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Backup Location" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Backup Type" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Backup User" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Backup Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="VRF Management Name" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Model" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP Read Community" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP V3 Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP V3 Private Key" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP V3 User" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP Version" IsOverridable="true" IsLocal="true">
+                            <AllowedValues>
+                                <AllowedValue>v1</AllowedValue>
+                                <AllowedValue>v2c</AllowedValue>
+                                <AllowedValue>v3</AllowedValue>
+                            </AllowedValues>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="SNMP Write Community" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Sessions Concurrency Limit" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Console Password" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Console Port" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="CLI TCP Port" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Console Server IP Address" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Console User" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="CLI Connection Type" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Power Management" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Enable SNMP" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                        <AttachedAttribute Name="Disable SNMP" IsOverridable="true" IsLocal="true">
+                            <AllowedValues/>
+                        </AttachedAttribute>
+                    </AttachedAttributes>
+                    <AttributeValues>
+                        <AttributeValue Name="User" Value=""/>
+                        <AttributeValue Name="Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                        <AttributeValue Name="Enable Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                        <AttributeValue Name="System Name" Value=""/>
+                        <AttributeValue Name="Contact Name" Value=""/>
+                        <AttributeValue Name="OS Version" Value=""/>
+                        <AttributeValue Name="Vendor" Value=""/>
+                        <AttributeValue Name="Location" Value=""/>
+                        <AttributeValue Name="Backup Location" Value=""/>
+                        <AttributeValue Name="Backup User" Value=""/>
+                        <AttributeValue Name="Backup Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                        <AttributeValue Name="Backup Type" Value=""/>
+                        <AttributeValue Name="Model" Value=""/>
+                        <AttributeValue Name="SNMP Read Community" Value=""/>
+                        <AttributeValue Name="SNMP V3 Password" Value=""/>
+                        <AttributeValue Name="SNMP V3 Private Key" Value=""/>
+                        <AttributeValue Name="SNMP V3 User" Value=""/>
+                        <AttributeValue Name="SNMP Version" Value=""/>
+                        <AttributeValue Name="SNMP Write Community" Value=""/>
+                        <AttributeValue Name="VRF Management Name" Value=""/>
+                        <AttributeValue Name="Console Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                        <AttributeValue Name="Console Port" Value="0"/>
+                        <AttributeValue Name="CLI TCP Port" Value="0"/>
+                        <AttributeValue Name="Console Server IP Address" Value=""/>
+                        <AttributeValue Name="Console User" Value=""/>
+                        <AttributeValue Name="CLI Connection Type" Value="Auto"/>
+                        <AttributeValue Name="Power Management" Value="True"/>
+                        <AttributeValue Name="Enable SNMP" Value="True"/>
+                        <AttributeValue Name="Disable SNMP" Value="False"/>
+                    </AttributeValues>
+                    <ParentModels/>
+                    <Drivers>
+                        <DriverName>Generic Cisco IOS Driver Version3</DriverName>
+                    </Drivers>
+                    <Scripts/>
+                </ResourceModel>
             </Models>
             <Categories/>
         </ResourceFamily>
@@ -346,7 +555,8 @@
                         <AttributeValue Name="Serial Number" Value=""/>
                     </AttributeValues>
                     <ParentModels>
-                        <ParentModelName>Ciscoiosrouter</ParentModelName>
+                        <ParentModelName>Cisco IOS Switch</ParentModelName>
+                        <ParentModelName>Cisco IOS Router</ParentModelName>
                     </ParentModels>
                     <Drivers/>
                     <Scripts/>
@@ -536,7 +746,8 @@
                         <AttributeValue Name="Port Description" Value=""/>
                     </AttributeValues>
                     <ParentModels>
-                        <ParentModelName>Ciscoiosrouter</ParentModelName>
+                        <ParentModelName>Cisco IOS Switch</ParentModelName>
+                        <ParentModelName>Cisco IOS Router</ParentModelName>
                     </ParentModels>
                     <Drivers/>
                     <Scripts/>
@@ -545,10 +756,6 @@
             <Categories/>
         </ResourceFamily>
     </ResourceFamilies>
-    <DriverDescriptors>
-        <DriverDescriptor Name="CiscoiosrouterDriver" DriverType="PythonDriver"/>
-
-    </DriverDescriptors>
-
+    <DriverDescriptors/>
     <ScriptDescriptors/>
 </DataModelInfo>

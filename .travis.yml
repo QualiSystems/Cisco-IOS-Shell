@@ -4,11 +4,11 @@ python:
 
 before_install:
     - pip install coveralls
-    - pip install -r package\requirements.txt
-    - pip install -r package\test_requirements.txt
+    - pip install -r package/requirements.txt
+    - pip install -r package/test_requirements.txt
 
 install:
-    - python package\setup.py install
+    - python package/setup.py install
 
 script:
     - nosetests

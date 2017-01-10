@@ -1,0 +1,280 @@
+﻿<Shell>
+    <ShellAttributes>
+    </ShellAttributes>
+        <ShellModel Family="Router">
+        <ResourceModel Name="Ciscoiosrouter" Description="" SupportsConcurrentCommands="false">
+            <AttachedAttributes>
+                <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Enable Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="System Name" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Contact Name" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="OS Version" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Vendor" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Location" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Backup Location" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Backup Type" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Backup User" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Backup Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="VRF Management Name" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Model" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP Read Community" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP V3 Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP V3 Private Key" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP V3 User" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP Version" IsOverridable="true" IsLocal="true">
+                    <AllowedValues>
+                        <AllowedValue>v1</AllowedValue>
+                        <AllowedValue>v2c</AllowedValue>
+                        <AllowedValue>v3</AllowedValue>
+                    </AllowedValues>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP Write Community" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Sessions Concurrency Limit" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Console Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Console Port" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="CLI TCP Port" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Console Server IP Address" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Console User" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="CLI Connection Type" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Power Management" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Enable SNMP" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Disable SNMP" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+            </AttachedAttributes>
+            <AttributeValues>
+                <AttributeValue Name="User" Value=""/>
+                <AttributeValue Name="Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                <AttributeValue Name="Enable Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                <AttributeValue Name="System Name" Value=""/>
+                <AttributeValue Name="Contact Name" Value=""/>
+                <AttributeValue Name="OS Version" Value=""/>
+                <AttributeValue Name="Vendor" Value=""/>
+                <AttributeValue Name="Location" Value=""/>
+                <AttributeValue Name="Backup Location" Value=""/>
+                <AttributeValue Name="Backup User" Value=""/>
+                <AttributeValue Name="Backup Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                <AttributeValue Name="Backup Type" Value="File System"/>
+                <AttributeValue Name="Model" Value=""/>
+                <AttributeValue Name="SNMP Read Community" Value=""/>
+                <AttributeValue Name="SNMP V3 Password" Value=""/>
+                <AttributeValue Name="SNMP V3 Private Key" Value=""/>
+                <AttributeValue Name="SNMP V3 User" Value=""/>
+                <AttributeValue Name="SNMP Version" Value=""/>
+                <AttributeValue Name="SNMP Write Community" Value=""/>
+                <AttributeValue Name="VRF Management Name" Value=""/>
+                <AttributeValue Name="Console Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                <AttributeValue Name="Console Port" Value="0"/>
+                <AttributeValue Name="CLI TCP Port" Value="0"/>
+                <AttributeValue Name="Sessions Concurrency Limit" Value="1"/>
+                <AttributeValue Name="Console Server IP Address" Value=""/>
+                <AttributeValue Name="Console User" Value=""/>
+                <AttributeValue Name="CLI Connection Type" Value="Auto"/>
+                <AttributeValue Name="Power Management" Value="True"/>
+                <AttributeValue Name="Enable SNMP" Value="True"/>
+                <AttributeValue Name="Disable SNMP" Value="False"/>
+            </AttributeValues>
+            <ParentModels />
+            <Drivers>
+                <DriverName>CiscoiosDriver</DriverName>
+            </Drivers>
+            <Scripts />
+        </ResourceModel>
+
+    </ShellModel>
+        <ShellModel Family="Switch">
+        <ResourceModel Name="Ciscoiosswitch" Description="" SupportsConcurrentCommands="false">
+            <AttachedAttributes>
+                <AttachedAttribute Name="User" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Enable Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="System Name" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Contact Name" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="OS Version" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Vendor" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Location" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Backup Location" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Backup Type" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Backup User" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Backup Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="VRF Management Name" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Model" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP Read Community" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP V3 Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP V3 Private Key" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP V3 User" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP Version" IsOverridable="true" IsLocal="true">
+                    <AllowedValues>
+                        <AllowedValue>v1</AllowedValue>
+                        <AllowedValue>v2c</AllowedValue>
+                        <AllowedValue>v3</AllowedValue>
+                    </AllowedValues>
+                </AttachedAttribute>
+                <AttachedAttribute Name="SNMP Write Community" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Sessions Concurrency Limit" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Console Password" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Console Port" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="CLI TCP Port" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Console Server IP Address" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Console User" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="CLI Connection Type" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Power Management" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Enable SNMP" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+                <AttachedAttribute Name="Disable SNMP" IsOverridable="true" IsLocal="true">
+                    <AllowedValues/>
+                </AttachedAttribute>
+            </AttachedAttributes>
+            <AttributeValues>
+                <AttributeValue Name="User" Value=""/>
+                <AttributeValue Name="Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                <AttributeValue Name="Enable Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                <AttributeValue Name="System Name" Value=""/>
+                <AttributeValue Name="Contact Name" Value=""/>
+                <AttributeValue Name="OS Version" Value=""/>
+                <AttributeValue Name="Vendor" Value=""/>
+                <AttributeValue Name="Location" Value=""/>
+                <AttributeValue Name="Backup Location" Value=""/>
+                <AttributeValue Name="Backup User" Value=""/>
+                <AttributeValue Name="Backup Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                <AttributeValue Name="Backup Type" Value="File System"/>
+                <AttributeValue Name="Model" Value=""/>
+                <AttributeValue Name="SNMP Read Community" Value=""/>
+                <AttributeValue Name="SNMP V3 Password" Value=""/>
+                <AttributeValue Name="SNMP V3 Private Key" Value=""/>
+                <AttributeValue Name="SNMP V3 User" Value=""/>
+                <AttributeValue Name="SNMP Version" Value=""/>
+                <AttributeValue Name="SNMP Write Community" Value=""/>
+                <AttributeValue Name="VRF Management Name" Value=""/>
+                <AttributeValue Name="Console Password" Value="3M3u7nkDzxWb0aJ/IZYeWw=="/>
+                <AttributeValue Name="Console Port" Value="0"/>
+                <AttributeValue Name="CLI TCP Port" Value="0"/>
+                <AttributeValue Name="Sessions Concurrency Limit" Value="1"/>
+                <AttributeValue Name="Console Server IP Address" Value=""/>
+                <AttributeValue Name="Console User" Value=""/>
+                <AttributeValue Name="CLI Connection Type" Value="Auto"/>
+                <AttributeValue Name="Power Management" Value="True"/>
+                <AttributeValue Name="Enable SNMP" Value="True"/>
+                <AttributeValue Name="Disable SNMP" Value="False"/>
+            </AttributeValues>
+            <ParentModels />
+            <Drivers>
+                <DriverName>CiscoiosDriver</DriverName>
+            </Drivers>
+            <Scripts />
+        </ResourceModel>
+
+    </ShellModel>
+</Shell>

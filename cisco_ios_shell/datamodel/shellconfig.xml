@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ShellsConfiguration
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://schemas.qualisystems.com/ResourceManagement/ShellsConfigurationSchema.xsd">
+    <ResourceTemplates>
+        <ResourceTemplate Name="Cisco IOS Switch" Model="Cisco IOS Switch" Driver="Generic Cisco IOS Driver Version2">
+            <Description>The networking Shell template will create a resource of this type in CloudShell. Once the Switch is modeled correctly in CloudShell it will be possible to use it in Sandboxes and for connectivity.</Description>
+            <AutoLoad Enable="true">
+                <Description>Discovers the device structure and populate its attributes.</Description>
+            </AutoLoad>
+            <Attributes>
+                <Attribute Name="SNMP Version" Value="" />
+                <Attribute Name="SNMP Read Community" Value="" />
+                <Attribute Name="SNMP Write Community" Value="" />
+                <Attribute Name="SNMP V3 User" Value="" />
+                <Attribute Name="SNMP V3 Password" Value="" />
+                <Attribute Name="SNMP V3 Private Key" Value="" />
+                <Attribute Name="Enable SNMP" Value="True" />
+                <Attribute Name="Disable SNMP" Value="False" />
+                <Attribute Name="CLI TCP Port" Value="0" />
+                <Attribute Name="CLI Connection Type" Value="Auto" />
+                <Attribute Name="User" Value="" />
+                <Attribute Name="Password" Value="" />
+                <Attribute Name="Enable Password" Value="" />
+                <Attribute Name="Console Server IP Address" Value="" />
+                <Attribute Name="Console Port" Value="0" />
+                <Attribute Name="Console User" Value="" />
+                <Attribute Name="Console Password" Value="" />
+                <Attribute Name="Backup Type" Value="" />
+                <Attribute Name="Backup User" Value="" />
+                <Attribute Name="Backup Password" Value="" />
+                <Attribute Name="Backup Location" Value="" />
+                <Attribute Name="Sessions Concurrency Limit" Value="1" />
+                <Attribute Name="Power Management" Value="False" />
+                <Attribute Name="VRF Management Name" Value="" />
+            </Attributes>
+        </ResourceTemplate>
+        <ResourceTemplate Name="Cisco IOS Router" Model="Cisco IOS Router" Driver="Generic Cisco IOS Driver Version2">
+            <Description>The networking Shell template will create a resource of this type in CloudShell. Once the Router is modeled correctly in CloudShell it will be possible to use it in Sandboxes and for connectivity.</Description>
+            <AutoLoad Enable="true">
+                <Description>Discovers the device structure and populate its attributes.</Description>
+            </AutoLoad>
+            <Attributes>
+                <Attribute Name="SNMP Version" Value="" />
+                <Attribute Name="SNMP Read Community" Value="" />
+                <Attribute Name="SNMP Write Community" Value="" />
+                <Attribute Name="SNMP V3 User" Value="" />
+                <Attribute Name="SNMP V3 Password" Value="" />
+                <Attribute Name="SNMP V3 Private Key" Value="" />
+                <Attribute Name="Enable SNMP" Value="True" />
+                <Attribute Name="Disable SNMP" Value="False" />
+                <Attribute Name="CLI TCP Port" Value="0" />
+                <Attribute Name="CLI Connection Type" Value="Auto" />
+                <Attribute Name="User" Value="" />
+                <Attribute Name="Password" Value="" />
+                <Attribute Name="Enable Password" Value="" />
+                <Attribute Name="Console Server IP Address" Value="" />
+                <Attribute Name="Console Port" Value="0" />
+                <Attribute Name="Console User" Value="" />
+                <Attribute Name="Console Password" Value="" />
+                <Attribute Name="Backup Type" Value="File System" />
+                <Attribute Name="Backup User" Value="" />
+                <Attribute Name="Backup Password" Value="" />
+                <Attribute Name="Backup Location" Value="" />
+                <Attribute Name="Sessions Concurrency Limit" Value="1" />
+                <Attribute Name="Power Management" Value="True" />
+                <Attribute Name="VRF Management Name" Value="" />
+            </Attributes>
+        </ResourceTemplate>
+    </ResourceTemplates>
+</ShellsConfiguration>

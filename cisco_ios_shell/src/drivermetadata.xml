@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Driver Name="Generic Cisco IOS Driver Version3" Version="4.0.0" MainClass="cisco_ios_resource_driver.CiscoIOSResourceDriver" Description="Generic driver for all IOS devices">
+    <Layout>
+        <Category Name="Hidden Commands">
+            <Command Name="shutdown" DisplayName="Shutdown" Description="">
+            </Command>
+            <Command Name="run_custom_config_command" DisplayName="Run Custom Config Command" Tags="">
+                <Parameters>
+                    <Parameter Name="custom_command" Type="String" Mandatory="True" DefaultValue="" Description=""/>
+                </Parameters>
+            </Command>
+            <Command Name="ApplyConnectivityChanges" DisplayName="ApplyConnectivityChanges" Tags="allow_unreserved">
+                <Parameters>
+                    <Parameter Name="request" Type="String" Mandatory="True" DefaultValue="" Description=""/>
+                </Parameters>
+            </Command>
+            <Command Name="orchestration_save" DisplayName="orchestration_save" Tags="allow_unreserved">
+                <Parameters>
+                    <Parameter Name="mode" Type="String" Mandatory="True" DefaultValue="shallow" Description=""/>
+                    <Parameter Name="custom_params" Type="String" Mandatory="True" DefaultValue="" Description=""/>
+                </Parameters>
+            </Command>
+            <Command Name="orchestration_restore" DisplayName="orchestration_restore" Tags="allow_unreserved">
+                <Parameters>
+                    <Parameter Name="saved_artifact_info" Type="String" Mandatory="True" DefaultValue=""
+                               Description=""/>
+                    <Parameter Name="custom_params" Type="String" Mandatory="False" DefaultValue="" Description=""/>
+                </Parameters>
+            </Command>
+            <Command Name="update_firmware" DisplayName="Load Firmware" Tags="" Description="Loads a firmware onto the device">
+                <Parameters>
+                    <Parameter Name="remote_host" Type="String" Mandatory="True" DisplayName="Remote Host" DefaultValue=""
+                               Description="The full path to the location of firmware file to load on the device."/>
+                    <Parameter Name="file_path" Type="String" Mandatory="True" DisplayName="File Path" DefaultValue=""
+                               Description="Firmware file name"/>
+                </Parameters>
+            </Command>
+            <Command Name="send_custom_command" DisplayName="Send Custom Command" Tags="" Description="Executes any custom command entered in the input on the device.">
+                <Parameters>
+                    <Parameter Name="custom_command" DisplayName="Command" Type="String" Mandatory="True" DefaultValue=""
+                               Description="The command to execute. Note that commands that require a reponse aren't supported."/>
+                </Parameters>
+            </Command>
+            <Command Name="send_custom_config_command" DisplayName="Run Custom Config Command" Tags="">
+                <Parameters>
+                    <Parameter Name="custom_command" Type="String" Mandatory="True" DefaultValue="" Description=""/>
+                </Parameters>
+            </Command>
+        </Category>
+        <Command Name="run_custom_command" DisplayName="Run Custom Command" Tags="" Description="Executes any custom command entered in the input on the device.">
+            <Parameters>
+                <Parameter Name="custom_command" DisplayName="Custom Command" Type="String" Mandatory="True" DefaultValue=""
+                           Description="The command to execute. Note that commands that require a reponse aren't supported."/>
+            </Parameters>
+        </Command>
+        <Command Name="health_check" DisplayName="Health check" Description="Performs checks on the device that validates that the Shell can work. In a networking device this checks usually include connectivity check for the protocols used by the Shell. The health check result will be visible in the resource live status and command output.">
+        </Command>
+        <Command Name="save" DisplayName="Save" Tags="" Description="Create and save a configuration file">
+            <Parameters>
+                <Parameter Name="folder_path" Type="String" Mandatory="False" DisplayName="Folder Path"
+                           DefaultValue=""
+                           Description="The path in which the configuration file will be saved. Won't include the name of the file but only the folder. This input is optional and in case this input is empty the value will be taken from the 'Backup Location' attribute on the root resource. The path should include the protocol type, for example 'tftp://asdf'."/>
+                <Parameter Name="configuration_type" Type="String" Mandatory="False" DisplayName="Configuration Type"
+                           DefaultValue=""
+                           Description="The type of configuration that will be saved. Possible values are StartUp and Running. If kept empty the default configuration type that will be used is Running."/>
+                <Parameter Name="vrf_management_name" Type="String" Mandatory="False" DisplayName="VRF Management Name" DefaultValue=""
+                           Description="Virtual Routing and Forwarding is used to share same/overlapping sub-net on the same core. Service Providers use it to share their backbone with multiple customers and also assign a management VRF which they use to manage the devices. If kept empty the value in the 'VRF Management Name' attribute on the root model will be used."/>
+            </Parameters>
+        </Command>
+        <Command Name="restore" DisplayName="Restore" Tags="" Description="Restore a configuration file">
+            <Parameters>
+                <Parameter Name="path" Type="String" Mandatory="True" DefaultValue="" DisplayName="Path"
+                           Description="The path to the configuration file, including the configuration file name. The path should include the protocol type (for example 'tftp://10.10.10.10/asdf')."/>
+                <Parameter Name="configuration_type" Type="String" Mandatory="False" DefaultValue=""
+                           DisplayName="Configuration Type"
+                           Description="The configuration type to restore. Possible values are StartUp and Running. If kept empty the configuration type that will be restored is Running."/>
+                <Parameter Name="restore_method" Type="String" Mandatory="False" DefaultValue=""
+                           DisplayName="Restore Method"
+                           Description="The restore method to use when restoring the configuration file. Possible Values are Append and Override. If kept empty the restore method will be Override."/>
+                <Parameter Name="vrf_management_name" Type="String" Mandatory="False" DisplayName="VRF Management Name" DefaultValue=""
+                           Description="Virtual Routing and Forwarding is used to share same/overlapping sub-net on the same core. Service Providers use it to share their backbone with multiple customers and also assign a management VRF which they use to manage the devices. If kept empty the value in the 'VRF Management Name' attribute on the root model will be used."/>
+            </Parameters>
+        </Command>
+        <Command Name="load_firmware" DisplayName="Load Firmware" Tags="" Description="Loads a firmware onto the device">
+            <Parameters>
+                <Parameter Name="path" Type="String" Mandatory="True" DisplayName="Path" DefaultValue=""
+                           Description="The full path to the location of firmware file to load on the device."/>
+                <Parameter Name="vrf_management_name" Type="String" Mandatory="False" DisplayName="VRF Management Name" DefaultValue=""
+                           Description="Virtual Routing and Forwarding is used to share same/overlapping sub-net on the same core. Service Providers use it to share their backbone with multiple customers and also assign a management VRF which they use to manage the devices. If kept empty the value in the 'VRF Management Name' attribute on the root model will be used."/>
+            </Parameters>
+        </Command>
+    </Layout>
+</Driver>

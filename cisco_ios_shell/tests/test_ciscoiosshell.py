@@ -129,7 +129,7 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_get_attr.return_value = vrf_management_name
 
         # Act
-        self.driver.load_firmware(mocked_context, path=path)
+        self.driver.load_firmware(mocked_context, path=path, vrf_management_name=vrf_management_name)
 
         # Assert
         mocked_class.return_value.load_firmware.assert_called_with(path=path, vrf_management_name=vrf_management_name)
@@ -160,7 +160,7 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_get_attr.return_value = vrf_management_name
 
         # Act
-        self.driver.save(mocked_context)
+        self.driver.save(mocked_context, folder_path='', configuration_type='', vrf_management_name='')
 
         # Assert
         mocked_class.return_value.save.assert_called_with(folder_path='', configuration_type='running',
@@ -195,7 +195,8 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_get_attr.return_value = vrf
 
         # Act
-        self.driver.save(mocked_context, folder_path=folder_path, configuration_type=configuration_type)
+        self.driver.save(mocked_context, folder_path=folder_path, configuration_type=configuration_type,
+                         vrf_management_name=None)
 
         # Assert
         mocked_class.return_value.save.assert_called_with(configuration_type=configuration_type,
@@ -213,7 +214,8 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_get_attr.return_value = vrf
 
         # Act
-        self.driver.save(mocked_context, configuration_type=configuration_type)
+        self.driver.save(mocked_context, configuration_type=configuration_type,
+                         folder_path='', vrf_management_name='')
 
         # Assert
         mocked_class.return_value.save.assert_called_with(configuration_type=configuration_type,
@@ -230,7 +232,7 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_get_attr.return_value = vrf
 
         # Act
-        self.driver.save(mocked_context, folder_path=folder_path)
+        self.driver.save(mocked_context, folder_path=folder_path, configuration_type='', vrf_management_name='')
 
         # Assert
         mocked_class.return_value.save.assert_called_with(configuration_type='running',
@@ -268,7 +270,7 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
 
         # Act
         self.driver.restore(mocked_context, path=path, configuration_type=configuration_type,
-                            restore_method=restore_method)
+                            restore_method=restore_method, vrf_management_name='')
 
         # Assert
         mocked_class.return_value.restore.assert_called_with(path=path, configuration_type=configuration_type,
@@ -285,7 +287,8 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_get_attr.return_value = vrf
 
         # Act
-        self.driver.restore(mocked_context, path=path, configuration_type=configuration_type)
+        self.driver.restore(mocked_context, path=path, configuration_type=configuration_type, restore_method='',
+                            vrf_management_name='')
 
         # Assert
         mocked_class.return_value.restore.assert_called_with(path=path, configuration_type=configuration_type,
@@ -300,7 +303,10 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_get_attr.return_value = None
 
         # Act
-        self.driver.restore(mocked_context, path=path)
+        self.driver.restore(mocked_context, path=path,
+                            configuration_type=None,
+                            restore_method=None,
+                            vrf_management_name=None)
 
         # Assert
         mocked_class.return_value.restore.assert_called_with(path=path, configuration_type='running',
@@ -312,7 +318,7 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_class.return_value.orchestration_save.return_value = ''
 
         # Act
-        self.driver.orchestration_save(mocked_context)
+        self.driver.orchestration_save(mocked_context, None, None)
 
         # Assert
         mocked_class.return_value.orchestration_save.assert_called_with(mode='shallow', custom_params=None)
@@ -336,7 +342,7 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_class.return_value.orchestration_save.return_value = ''
 
         # Act
-        self.driver.orchestration_save(mocked_context, mode='shallow')
+        self.driver.orchestration_save(mocked_context, mode='shallow', custom_params=None)
 
         # Assert
         mocked_class.return_value.orchestration_save.assert_called_with(mode='shallow', custom_params=None)
@@ -345,10 +351,11 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
     def test_orchestration_restore_no_custom_params(self, mocked_class, mocked_context, mocked_logger, mocked_api):
         # Arrange
         saved_artifact_info = 'test json'
+        custom_params = None
         mocked_class.return_value.orchestration_restore.return_value = ''
 
         # Act
-        self.driver.orchestration_restore(mocked_context, saved_artifact_info)
+        self.driver.orchestration_restore(mocked_context, saved_artifact_info, custom_params)
 
         # Assert
         mocked_class.return_value.orchestration_restore.assert_called_with(saved_artifact_info=saved_artifact_info,

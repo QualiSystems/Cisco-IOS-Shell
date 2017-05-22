@@ -15,6 +15,9 @@ install:
 
 script:
     - nosetests --with-coverage --cover-package=cloudshell/devices --where=tests
+    - 'if [ ${TEST_DIR} = "package" ]; then
+        python setup.py sdist --format zip
+      fi'
 
 after_success:
     - coveralls

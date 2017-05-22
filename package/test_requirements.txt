@@ -1,1 +1,1 @@
-cloudshell-networking-cisco>=4.0,<4.1
+-e git+https://github.com/QualiSystems/cloudshell-networking-cisco/tree/4.0.252#egg=cloudshell-networking-cisco

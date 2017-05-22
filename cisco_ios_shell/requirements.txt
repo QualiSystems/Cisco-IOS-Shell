@@ -1,1 +1,1 @@
--e git+https://github.com/QualiSystems/cloudshell-networking-cisco-ios.git@dev#egg=cloudshell-networking-cisco-ios&subdirectory=package
+-e git+https://github.com/QualiSystems/Cisco-IOS-Shell.git@dev#egg=cloudshell-networking-cisco-ios&subdirectory=package

@@ -14,12 +14,11 @@ install:
     - python setup.py install
 
 script:
-    - nosetests --with-coverage --cover-package=cloudshell/networking/cisco/ios --where=tests
     - 'if [ $TEST_DIR = "package" ]; then
-        nosetests --with-coverage --cover-package=cloudshell/networking/cisco/ios --where=tests
-        python setup.py sdist --format zip
+        nosetests --with-coverage --cover-package=cloudshell/networking/cisco/ios --where=tests;
+        python setup.py sdist --format zip;
       else
-        nosetests --with-coverage --where=tests
+        nosetests --with-coverage --where=tests;
       fi'
 
 after_success:

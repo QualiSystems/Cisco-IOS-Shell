@@ -1,7 +1,1 @@
-nose
-coverage
-unittest2
-mock
-teamcity-messages
-jsonpickle
-nose-exclude
+cloudshell-networking-cisco-ios>=4.0,<4.1

@@ -7,7 +7,7 @@ Tests for `CiscoiosshellDriver`
 import unittest
 from mock import patch
 
-from cloudshell.shell.core.context import ResourceCommandContext, ResourceContextDetails, ReservationContextDetails
+from cloudshell.shell.core.driver_context import ResourceCommandContext
 from src.cisco_ios_resource_driver import CiscoIOSResourceDriver
 
 

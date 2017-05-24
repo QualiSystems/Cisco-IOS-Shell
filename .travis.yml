@@ -5,7 +5,7 @@ python:
 install:
     - cd package
     - pip install coveralls
-        - 'if [ ${TRAVIS_BRANCH} = "master" ]; then
+    - 'if [ ${TRAVIS_BRANCH} = "master" ]; then
         pip install --extra-index-url https://testpypi.python.org/pypi -r requirements.txt;
       else
         pip install --extra-index-url https://testpypi.python.org/pypi -r dev_requirements.txt;

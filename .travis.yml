@@ -11,7 +11,7 @@ before_install:
     - 'if [ $TEST_DIR = "cisco_ios_shell" ]; then
         cd ..;
         cd package;
-        python setup.py install
+        python setup.py install;
       else
         pip install -r requirements.txt;
       fi'

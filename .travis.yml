@@ -1,22 +1,22 @@
 language: python
 python:
 - '2.7'
+env:
+  - TEST_DIR=package
+  - TEST_DIR=cisco_ios_shell
 
-install:
-    - cd package
+before_install:
+    - cd $TEST_DIR
     - pip install coveralls
-    - 'if [ ${TRAVIS_BRANCH} = "master" ]; then
-        pip install -r requirements.txt;
-      else
-        pip install -r dev_requirements.txt;
-      fi'
+    - pip install -r requirements.txt
     - pip install -r test_requirements.txt
-    - python setup.py develop --no-deps
-    - cd ..
 
 script:
-    - nosetests --with-coverage --cover-package=package/cloudshell/networking/cisco/ios --where=package/tests
-    - nosetests --with-coverage --where=cisco_ios_shell/tests
+    - 'if [ $TEST_DIR = "package" ]; then
+        nosetests --with-coverage --cover-package=cloudshell/networking/cisco/ios --where=tests;
+      else
+        nosetests --with-coverage --cover-package=tests --where=tests;
+      fi'
 
 after_success:
     - coveralls

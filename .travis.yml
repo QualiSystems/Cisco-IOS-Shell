@@ -15,7 +15,7 @@ install:
     - cd ..
 
 script:
-    - nosetests --with-coverage --cover-package=cloudshell/networking/cisco/ios --where=package/tests
+    - nosetests --with-coverage --cover-package=package/cloudshell/networking/cisco/ios --where=package/tests
     - nosetests --with-coverage --where=cisco_ios_shell/tests
 
 after_success:

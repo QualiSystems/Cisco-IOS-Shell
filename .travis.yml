@@ -11,6 +11,11 @@ before_install:
     - 'if [ $TEST_DIR = "cisco_ios_shell" ]; then
         cd ..;
         cd package;
+        if [ ${TRAVIS_BRANCH} = "master" ]; then
+            pip install -r requirements.txt;
+        else
+            pip install -r dev_requirements.txt;
+        fi
         python setup.py install;
       else
         pip install -r requirements.txt;

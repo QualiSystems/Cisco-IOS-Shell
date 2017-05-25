@@ -1,9 +1,6 @@
 language: python
 python:
 - '2.7'
-env:
-  - TEST_DIR=package
-  - TEST_DIR=cisco_ios_shell
 
 install:
     - pip install coveralls
@@ -13,23 +10,11 @@ install:
         else
             pip install -r dev_requirements.txt;
         fi'
-    - 'if [ $TEST_DIR = "cisco_ios_shell" ]; then
-        python setup.py develop --no-deps;
-        cd ..;
-        cd $TEST_DIR;
-      else
-        cd ..;
-        cd $TEST_DIR;
-        pip install -r requirements.txt;
-      fi'
     - pip install -r test_requirements.txt
+    - python setup.py develop --no-deps
 
 script:
-    - 'if [ $TEST_DIR = "package" ]; then
-        nosetests --with-coverage --cover-package=networking/cisco/ios --where=tests;
-      else
-        nosetests --with-coverage --cover-package=tests --where=tests;
-      fi'
+    - nosetests --with-coverage --cover-package=src --cover-package=cloudshell.networking.cisco.ios --where=./ --where=package/tests/ --where=cisco_ios_shell/tests
 
 after_success:
     - coveralls

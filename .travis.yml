@@ -5,27 +5,28 @@ env:
   - TEST_DIR=package
   - TEST_DIR=cisco_ios_shell
 
-before_install:
-    - cd $TEST_DIR
+install:
     - pip install coveralls
-    - 'if [ $TEST_DIR = "cisco_ios_shell" ]; then
-        cd ..;
-        cd package;
-        if [ ${TRAVIS_BRANCH} = "master" ]; then
+    - cd package
+    - 'if [ ${TRAVIS_BRANCH} = "master" ]; then
             pip install -r requirements.txt;
         else
             pip install -r dev_requirements.txt;
-        fi
-        python setup.py sdist;
-        pip install src/cloudshell-networking-cisco-ios-1.0.0 --no-deps
+        fi'
+    - 'if [ $TEST_DIR = "cisco_ios_shell" ]; then
+        python setup.py develop --no-deps;
+        cd ..;
+        cd $TEST_DIR;
       else
+        cd ..;
+        cd $TEST_DIR;
         pip install -r requirements.txt;
       fi'
     - pip install -r test_requirements.txt
 
 script:
     - 'if [ $TEST_DIR = "package" ]; then
-        nosetests --with-coverage --cover-package=cloudshell/networking/cisco/ios --where=tests;
+        nosetests --with-coverage --cover-package=networking/cisco/ios --where=tests;
       else
         nosetests --with-coverage --cover-package=tests --where=tests;
       fi'

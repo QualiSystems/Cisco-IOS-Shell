@@ -16,7 +16,8 @@ before_install:
         else
             pip install -r dev_requirements.txt;
         fi
-        python setup.py install;
+        python setup.py sdist;
+        pip install src/cloudshell-networking-cisco-ios-1.0.0 --no-deps
       else
         pip install -r requirements.txt;
       fi'

@@ -1,1 +1,1 @@
--e git+https://github.com/QualiSystems/cloudshell-networking-cisco.git@4.0.252#egg=cloudshell-networking-cisco
+-e git+https://github.com/QualiSystems/cloudshell-networking-cisco.git@1-gen-support-only#egg=cloudshell-networking-cisco

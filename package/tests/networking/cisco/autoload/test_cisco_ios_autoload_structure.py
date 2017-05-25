@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from cloudshell.networking.cisco.ios.autoload.autoload_structure import CiscoIOSDevice, GenericChassis, GenericModule, \
-    GenericPort, GenericPortChannel, GenericPowerPort
+    GenericPort, GenericPortChannel, GenericPowerPort, GenericSubModule
 from cloudshell.shell.core.driver_context import AutoLoadResource, AutoLoadAttribute
 
 
@@ -20,6 +20,12 @@ class CiscoAutoloadStructure(TestCase):
 
     def test_get_correct_attributes_names_of_module_element(self):
         module = GenericModule(name="Module 0", relative_address="0/0")
+        self.assertIsInstance(module.get_resource(), AutoLoadResource)
+        for attr in module.get_attributes():
+            self.assertIsInstance(attr, AutoLoadAttribute)
+
+    def test_get_correct_attributes_names_of_Sub_module_element(self):
+        module = GenericSubModule(name="Module 0", relative_address="0/0")
         self.assertIsInstance(module.get_resource(), AutoLoadResource)
         for attr in module.get_attributes():
             self.assertIsInstance(attr, AutoLoadAttribute)

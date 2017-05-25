@@ -5,20 +5,21 @@ python:
 install:
     - pip install coveralls
     - 'if [ ${TRAVIS_BRANCH} = "master" ]; then
-            pip install -r package/requirements.txt;
-            pip install -r cisco_ios_shell/requirements.txt;
+	    pushd package;
+    	    python setup.py install;
+	    popd;
         else
             pip install -r package/dev_requirements.txt;
-            pip install -r cisco_ios_shell/dev_requirements.txt;
+	    pushd package;
+    	    python setup.py develop --no-deps;
+	    popd;
         fi'
+    - pip install -r cisco_ios_shell/src/requirements.txt
     - pip install -r package/test_requirements.txt
     - pip install -r cisco_ios_shell/test_requirements.txt
-    - cd package
-    - python setup.py develop --no-deps
-    - cd ..
 
 script:
-    - nosetests --with-coverage --cover-package=src --cover-package=cloudshell.networking.cisco.ios --where=./ --where=package/tests/ --where=cisco_ios_shell/tests
+    - nosetests --with-coverage --cover-package=src,cloudshell.networking.cisco.ios package/tests cisco_ios_shell/tests
 
 after_success:
     - coveralls

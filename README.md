@@ -1,7 +1,7 @@
 # cloudshell-networking-cisco-ios
 ![alt tag](https://travis-ci.org/QualiSystems/Cisco-IOS-Shell.svg)
 [![Coverage Status](https://coveralls.io/repos/github/QualiSystems/Cisco-IOS-Shell/badge.svg)](https://coveralls.io/github/QualiSystems/Cisco-IOS-Shell)
-[![PyPI version](https://badge.fury.io/py/Cisco-IOS-Shell.svg)](https://badge.fury.io/py/Cisco-IOS-Shell)
+[![PyPI version](https://badge.fury.io/py/cloudshell-networking-cisco-ios.svg)](https://badge.fury.io/py/cloudshell-networking-cisco-ios)
 [![Dependency Status](https://dependencyci.com/github/QualiSystems/Cisco-IOS-Shell/badge)](https://dependencyci.com/github/QualiSystems/Cisco-IOS-Shell)
 [![Stories in Ready](https://badge.waffle.io/QualiSystems/Cisco-IOS-Shell.svg?label=ready&title=Ready)](http://waffle.io/QualiSystems/Cisco-IOS-Shell)
 

@@ -13,7 +13,9 @@ install:
         fi'
     - pip install -r package/test_requirements.txt
     - pip install -r cisco_ios_shell/test_requirements.txt
-    - python package/setup.py develop --no-deps
+    - cd package
+    - python setup.py develop --no-deps
+    - cd ..
 
 script:
     - nosetests --with-coverage --cover-package=src --cover-package=cloudshell.networking.cisco.ios --where=./ --where=package/tests/ --where=cisco_ios_shell/tests

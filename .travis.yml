@@ -3,16 +3,16 @@ python:
     - "2.7"
 
 install:
-    - 'if [ ${TRAVIS_BRANCH} \!= "master" ] && [ -f cisco_ios_shell/dev_requirements.txt ]; then
-        pip install --extra-index-url https://testpypi.python.org/pypi -r cisco_ios_shell/dev_requirements.txt;
+    - 'if [ ${TRAVIS_BRANCH} \!= "master" ] && [ -f dev_requirements.txt ]; then
+        pip install --extra-index-url https://testpypi.python.org/pypi -r dev_requirements.txt;
       else
-        pip install -r cisco_ios_shell/src/requirements.txt;
+        pip install -r src/requirements.txt;
       fi'
-    - pip install -r cisco_ios_shell/test_requirements.txt
+    - pip install -r test_requirements.txt
     - pip install coveralls
-    
+
 script:
-    - nosetests --with-coverage --cover-package=src cisco_ios_shell/tests
+    - nosetests --with-coverage --cover-package=src tests
 
 after_success:
     - coveralls

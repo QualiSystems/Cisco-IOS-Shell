@@ -19,7 +19,7 @@ install:
     - pip install -r cisco_ios_shell/test_requirements.txt
 
 script:
-    - nosetests --with-coverage --cover-package=src,cloudshell.networking.cisco.ios package/tests cisco_ios_shell/tests
+    - nosetests --with-coverage --cover-package=src
 
 after_success:
     - coveralls

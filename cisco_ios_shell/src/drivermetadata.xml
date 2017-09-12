@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Driver Name="Generic Cisco IOS Driver Version3" Version="4.0.0" MainClass="cisco_ios_resource_driver.CiscoIOSResourceDriver" Description="Generic driver for all IOS devices">
+<Driver Name="Generic Cisco IOS Driver Version4" Version="4.0.0" MainClass="cisco_ios_resource_driver.CiscoIOSResourceDriver" Description="Generic driver for all IOS devices">
     <Layout>
         <Category Name="Hidden Commands">
             <Command Name="shutdown" DisplayName="Shutdown" Description="">

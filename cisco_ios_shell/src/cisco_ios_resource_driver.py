@@ -100,6 +100,44 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         result_str = send_command_operations.run_custom_config_command(custom_command=custom_command)
         return result_str
 
+    def send_custom_command(self, context, custom_command):
+        """Send custom command
+
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
+        :return: result
+        :rtype: str
+        """
+
+        logger = get_logger_with_thread_id(context)
+        api = get_api(context)
+
+        resource_config = create_networking_resource_from_context(shell_name=self.SHELL_NAME,
+                                                                  supported_os=self.SUPPORTED_OS,
+                                                                  context=context)
+
+        send_command_operations = CommandRunner(cli=self._cli, logger=logger, resource_config=resource_config, api=api)
+        response = send_command_operations.run_custom_command(custom_command=custom_command)
+        return response
+
+    def send_custom_config_command(self, context, custom_command):
+        """Send custom command in configuration mode
+
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
+        :return: result
+        :rtype: str
+        """
+
+        logger = get_logger_with_thread_id(context)
+        api = get_api(context)
+
+        resource_config = create_networking_resource_from_context(shell_name=self.SHELL_NAME,
+                                                                  supported_os=self.SUPPORTED_OS,
+                                                                  context=context)
+
+        send_command_operations = CommandRunner(cli=self._cli, logger=logger, resource_config=resource_config, api=api)
+        result_str = send_command_operations.run_custom_config_command(custom_command=custom_command)
+        return result_str
+
     def ApplyConnectivityChanges(self, context, request):
         """
         Create vlan and add or remove it to/from network interface
@@ -270,6 +308,28 @@ class CiscoIOSResourceDriver(ResourceDriverInterface, NetworkingResourceDriverIn
         logger.info('Start Load Firmware')
         firmware_operations = FirmwareRunner(cli=self._cli, logger=logger, resource_config=resource_config, api=api)
         response = firmware_operations.load_firmware(path=path, vrf_management_name=vrf_management_name)
+        logger.info('Finish Load Firmware: {}'.format(response))
+
+    @GlobalLock.lock
+    def update_firmware(self, context, remote_host, file_path):
+        """Upload and updates firmware on the resource
+
+        :param ResourceCommandContext context: ResourceCommandContext object with all Resource Attributes inside
+        :param remote_host: full path to firmware file, i.e. tftp://10.10.10.1/firmware.tar
+        :param file_path: file name
+        """
+
+        logger = get_logger_with_thread_id(context)
+        api = get_api(context)
+
+        resource_config = create_networking_resource_from_context(shell_name=self.SHELL_NAME,
+                                                                  supported_os=self.SUPPORTED_OS,
+                                                                  context=context)
+
+        logger.info('Start Load Firmware')
+        firmware_operations = FirmwareRunner(cli=self._cli, logger=logger, resource_config=resource_config, api=api)
+        response = firmware_operations.load_firmware(path=remote_host,
+                                                     vrf_management_name=resource_config.vrf_management_name)
         logger.info('Finish Load Firmware: {}'.format(response))
 
     def health_check(self, context):

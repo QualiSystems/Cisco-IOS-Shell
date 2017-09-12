@@ -1,12 +1,16 @@
 language: python
 python:
-- '2.7'
+    - "2.7"
 
 install:
-    - pip install coveralls
-    - pip install -r cisco_ios_shell/src/requirements.txt
+    - 'if [ ${TRAVIS_BRANCH} \!= "master" ] && [ -f cisco_ios_shell/dev_requirements.txt ]; then
+        pip install --extra-index-url https://testpypi.python.org/pypi -r cisco_ios_shell/dev_requirements.txt;
+      else
+        pip install -r cisco_ios_shell/src/requirements.txt;
+      fi'
     - pip install -r cisco_ios_shell/test_requirements.txt
-
+    - pip install coveralls
+    
 script:
     - nosetests --with-coverage --cover-package=src cisco_ios_shell/tests
 

@@ -2,3 +2,5 @@
 package/cloudshell_networking_cisco_ios.egg-info
 package/dist
 cisco_ios_shell/src/test_ios.py
+dist
+src/test_ios.py

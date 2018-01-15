@@ -391,7 +391,7 @@ class TestCiscoIOSShellDriver(unittest.TestCase):
         mocked_class.return_value.orchestration_restore.assert_called_with(saved_artifact_info=saved_artifact_info,
                                                                            custom_params=custom_params)
 
-    @patch('src.cisco_ios_resource_driver.create_networking_resource_from_context')
+    @patch('src.driver.create_networking_resource_from_context')
     @patch('src.cisco_ios_resource_driver.ConnectivityRunner')
     def test_apply_connectivity_changes(self, mocked_class, mocked_get_attr, mocked_context, mocked_logger, mocked_api):
         # Arrange
